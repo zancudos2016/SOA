@@ -1,0 +1,282 @@
+﻿body{
+    margin:0px;
+    font-family: helvetica; 
+}
+.tituloWF{
+    height: 23px;
+    border: 1px solid #b1bebe;
+    padding: 7px 7px 7px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+}
+
+.tituloVentana{
+	font-size: 12px;
+	font-weight: bold;
+    color: #090084;
+}
+
+.subtituloVentana{
+    height:20px;
+    border-left: 1px solid white !Important;
+    padding-left: 10px;
+	vertical-align:middle;
+	font-size: 9px;
+	font-weight: bold;
+	color:white;
+}
+
+.tituloMensaje{
+    border: 1px solid #b1bebe;
+    padding: 5px 5px 5px 8px;
+    font-size: 12px;
+	font-weight: bold;
+    color:white;
+}
+
+.tituloReporte{
+    background-color: rgb(249,178,30);
+	font-size: 12px;
+	font-weight: bold;
+    color: #090084;
+}
+
+.fsConsulta{
+    border: solid 1px #ddd; 
+    padding: 0px 5px 0px 5px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3C3C3B;
+}
+.fsNuevo{
+    border: solid 1px #ddd;
+    padding: 5px 10px 5px 10px;
+    font-size: 11px; 
+    font-weight: bold;
+    color: #3C3C3B;
+}
+.fsSeleccione{
+    border: solid 1px #ddd;
+    padding: 5px 10px 5px 10px;
+    font-size: 11px; 
+    font-weight: normal;
+    color: #3C3C3B;
+}
+
+.label{
+    text-align: right;
+	font-size: 10px;
+    font-weight: normal;
+	color: #3C3C3B;
+}
+.labelLeft{
+    text-align: left;
+	font-size: 10px;
+    font-weight: normal;
+	color: #3C3C3B;
+}
+
+.labelBold{
+    text-align: right;
+	font-size: 10px;
+	font-weight:bold;
+    color: #3C3C3B;
+}
+.labelBoldLeft{
+    text-align: left;
+	font-size: 10px;
+	font-weight:bold;
+    color: #3C3C3B;
+}
+
+.centrado{
+    text-align: center !important;
+}
+
+.input{
+	font-size: 10px;
+	color: #000000;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+.button{
+    margin-bottom: 2px;
+	width: 100px;
+	height: 22px;
+    border: 1px solid #b1bebe;
+	background-color:gray;
+	text-align:center;
+	vertical-align: middle;
+	font-size:10px;
+	font-weight:bold;
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.textbox{
+    float: left;
+}
+.checkbox{
+    font-size: 10px;
+}
+.checkbox input{
+    margin: 2px;
+}
+.checkbox label{
+    position: relative;
+    top: -2px;
+    margin: 0px 5px 0px 2px;
+}
+
+.combo{
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.wrap{
+    white-space: normal;
+    width: 100px;
+}
+
+.Confirmacion{
+    width: 100%;
+    text-align: left;
+}
+.labelMensajeValidacion{
+   font-size: 11px;
+   color: #BA342A;
+   font-weight:bold;
+   color:#FE1A01;
+   font-size:x-small ;
+   text-align :center ;
+}
+
+.Registros{
+    height: 16px;
+    text-align: right;
+    font-size: 10px;
+    font-weight: bold;
+    color: #3C3C3B;
+}
+.RegistrosLeft{
+    height: 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+    color: #3C3C3B;
+}
+
+.pnlPopup{
+	width: 310px;
+	height: auto;
+	padding: 0;
+	margin: 0px;
+	font-size: 12px;
+	background-color: #FFF;
+	color: #515559;
+}
+
+.fEnlace{
+    color: #7E1712 !Important;
+    text-decoration: underline;
+}
+.fText{
+    color: #7E1712;
+    font-weight: bold;
+}
+.Obligatorio{
+    position: relative;
+    top: 3px;
+    left: 3px;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    color: red;
+}
+
+/*Tooltip*/
+a.infoLeft{
+    position:relative;
+    z-index:24;
+    background-color:#ccc;
+    text-decoration:none;
+    color:#000;
+}
+a.infoLeft img{height:16px;width:16px;}
+a.infoLeft:hover{z-index:25; background-color:#ff0}
+a.infoLeft span{display: none;}
+a.infoLeft:hover span{
+    opacity: 1;
+    display:block;
+    position: absolute;
+    top:2em; left:2em; width:20em;
+    border: 1px solid;
+    border-radius: 5px;
+    background: silver;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 11px;
+    color: #3C3C3B;
+}
+
+a.infoRight{
+    position:relative;
+    z-index:24;
+    background-color:#ccc;
+    text-decoration:none;
+    color:#000;
+}
+a.infoRight img{height:16px;width:16px;}
+a.infoRight:hover{z-index:25; background-color:#ff0}
+a.infoRight span{display: none;}
+a.infoRight:hover span{
+    display:block;
+    position: absolute;
+    top:2em; right:2em; width:20em;
+    border: 1px solid;
+    border-radius: 5px;
+    background: silver;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 11px;
+    color: #3C3C3B;
+}
+
+/*Datepicker*/
+.ui-datepicker-trigger{
+    position: relative;
+    top: 4px;
+    left: 2px;
+    cursor: pointer;
+}
+
+/*Links*/
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.deactive{
+    color: #ccc;
+}
