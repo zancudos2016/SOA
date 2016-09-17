@@ -9,7 +9,8 @@ namespace WcfServices.Persistencia
 {
     public class AtencionDAO
     {
-        private string CadenaConexion = "Data Source=(local); Initial Catalog=BDAtenciones; Integrated Security=SSPI;";
+        private string CadenaConexion = "Data Source=.\\SQLEXPRESS2014; Initial Catalog=DBAtenciones; Integrated Security=SSPI;";
+        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sa;Initial Catalog=DBAtenciones;Server=ALEXANDER23-PC\SQLEXPRESS2014";
 
         public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
