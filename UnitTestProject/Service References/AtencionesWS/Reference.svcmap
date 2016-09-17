@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7bedf21e-a770-441f-a6d5-92ff06fd885e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:25097/Atenciones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Atenciones.wsdl" MetadataType="Wsdl" ID="4d75f1d1-f81d-4303-b298-b422ab7a8b12" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?wsdl" />
+    <MetadataFile FileName="Atenciones.disco" MetadataType="Disco" ID="1eb28b93-c001-4b86-8757-6006bec44a0f" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?disco" />
+    <MetadataFile FileName="Atenciones.xsd" MetadataType="Schema" ID="2b07fd53-ae91-46e4-aa28-7639447544ff" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Atenciones1.xsd" MetadataType="Schema" ID="3198a173-2dd2-4540-8783-1450c1767b1e" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Atenciones2.xsd" MetadataType="Schema" ID="3de6c541-e1dc-4b99-a881-d7430d76e547" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?xsd=xsd3" />
+    <MetadataFile FileName="Atenciones3.xsd" MetadataType="Schema" ID="5ecf0a9b-41c3-4a7a-a830-8f5ae8806c02" SourceId="1" SourceUrl="http://localhost:25097/Atenciones.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
