@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{FBA920A8-8A0D-4608-B841-80AEC79D157E}"
 EndProject
@@ -10,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPOSPrototipo", "DPOSPrototipo\DPOSPrototipo.csproj", "{92A372A4-A440-4F02-8EB2-BC61E1326EC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{1F81BE2C-2C7A-4F67-9DAC-BBC7CFF559B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{2A05D888-AB51-4706-8E4D-B25D5E8B54B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructura", "Infraestructura", "{5CE19AE2-B2E9-4F1F-B242-46631E4169DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{E6396328-69DF-4951-898A-516773AA1F29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +41,20 @@ Global
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6396328-69DF-4951-898A-516773AA1F29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6396328-69DF-4951-898A-516773AA1F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6396328-69DF-4951-898A-516773AA1F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6396328-69DF-4951-898A-516773AA1F29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4} = {1F81BE2C-2C7A-4F67-9DAC-BBC7CFF559B3}
+		{E6396328-69DF-4951-898A-516773AA1F29} = {5CE19AE2-B2E9-4F1F-B242-46631E4169DB}
 	EndGlobalSection
 EndGlobal
