@@ -518,11 +518,15 @@
     <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
     <Content Include="Views\Main\main.html" />
     <Content Include="Views\Main\main.js" />
+    <Content Include="Views\Atenciones\atenciones.html" />
+    <Content Include="Views\Atenciones\atenciones.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\SessionControllerHandler.cs" />
+    <Compile Include="App_Start\SessionHttpControllerRouteHandler.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\securityController.cs" />
     <Compile Include="Global.asax.cs">

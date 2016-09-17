@@ -23,9 +23,11 @@ namespace Entidades
 
         [DataMember]
         public int NUM_TOKE { get; set; }
-
+        [DataMember]
         public bool IND_ERRO { get; set; }
+        [DataMember]
         public string ALF_ERRO { get; set; }
+        [DataMember]
         public string ALF_URLL { get; set; }
     }
 }

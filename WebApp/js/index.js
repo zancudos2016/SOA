@@ -12,6 +12,7 @@
             "WAP0001_USUA",
             { COD_USUA: $("#Usuario").val(), ALF_PASS: $("#Password").val() })
           .done(function (oBe) {
+              console.log(oBe);
               if (!oBe.IND_ERRO) {
                   $(location).attr("href", oBe.ALF_URLL);
               }

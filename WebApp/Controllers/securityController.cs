@@ -35,5 +35,16 @@ namespace WebApp.Controllers
             }
             return oBe;
         }
+        [HttpPost]
+        [Route("WAP0002_USUA")]
+        public SHMC_USUA Get_SESI()
+        {
+            if (HttpContext.Current.Session["COD_USUA"] == null)
+                return new SHMC_USUA { ALF_URLL = "../../index.html", IND_ERRO = true, ALF_ERRO = "Sesión no iniciada." };
+            var oBe = new SHMC_USUA();
+            oBe.IND_ERRO = false;
+            oBe.ALF_ERRO = "";
+            return oBe;
+        }
     }
 }

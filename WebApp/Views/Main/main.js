@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     $.post(
-        "../../WASECURITYG0002_SESI",
-        { NUM_ACCI: 1 })
+        "../../WAP0002_USUA")
       .done(function (oBe) {
           if (!oBe.IND_ERRO) {
               $("#mainContent").css("visibility", "visible");
@@ -21,15 +20,9 @@
     //--------------------------------------------------------------------------
     var menuItems = [
     {
-        text: "Administración",
+        text: "Bandejas",
         items: [
-            { text: "Usuarios", id: 10001, url: "../Users/users.html" },
-        ]
-    },
-    {
-        text: "Listados",
-        items: [
-            { text: "Incidencias", id: 20001, url: "../Report/list.html" }
+            { text: "Atenciones", id: 10001, url: "../Atenciones/atenciones.html" }
         ]
     }
     ];

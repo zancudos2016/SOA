@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv='cache-control' content="no-cache, no-store, must-revalidate">
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link type="text/css" rel="stylesheet" href="../../Content/dx.common.css" />
+    <link type="text/css" rel="stylesheet" href="../../Content/generic.light-compact.custom.gray.css" />
+    <link type="text/css" rel="stylesheet" href="../../Content/custom.css" />
+    <script type="text/javascript" src="../../Scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.globalize/globalize.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.globalize/cultures/globalize.culture.es-PE.js"></script>
+    <script type="text/javascript" src="../../Scripts/dx.webappjs.js"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.isloading.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/devextreme-localization/dx.webappjs.es.js"></script>
+    <script type="text/javascript" src="../../Scripts/devextreme-modules/dx.module-widgets-base.js"></script>
+    <script type="text/javascript" src="../../Scripts/devextreme-modules/dx.module-widgets-web.js"></script>
+    <script type="text/javascript" src="users.js"></script>
+</head>
+<body style="background-color:#55597c;">
+    <div id="mainContent" style="visibility:hidden;">
+        <div id="tblContent">
+            <div>
+                <div>
+                    <div class="tblColumn">
+                        <img src="../../images/Logo.png" />
+                    </div>
+                    <div class="tblColumn" style="color:white;font-size:15pt;">
+                        Aplicacion para demostración
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="tblContent">
+                <div class="tblRow">
+                    <div class="tblColumn" style="background-color:#d4d3d3">
+                        <div id="menu"></div>
+                    </div>
+                </div>
+                <div class="tblRow">
+                    <div class="tblContent">
+                        <div class="tblRow">
+                            <div class="tblColumn" style="width: 25px; text-align: left;">
+                                <div id="cmdNew"></div>
+                            </div>
+                            <div class="tblColumn" style="width: 25px; text-align: left;">
+                                <div id="cmdEdit"></div>
+                            </div>
+                            <div class="tblColumn" style="width: 25px; text-align: left;">
+                                <div id="cmdActivate"></div>
+                            </div>
+                            <div class="tblColumn" style="width: 25px; text-align: left;">
+                                <div id="cmdDeactivate"></div>
+                            </div>
+                            <div class="tblColumn" style="width: 25px; text-align: left;">
+                                <div id="cmdRevert"></div>
+                            </div>
+                            <div class="tblColumn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tblRow">
+                    <div id="gdvUsers"></div>
+                </div>
+            </div>
+            <!-- VENTANA PARA AGREGAR USUARIO -->
+            <div id="popupUser" hidden="hidden">
+                <div class="ContentTable">
+                    <div>
+                        <div class="ContentLabelIFree" style="width:600px;">
+                            <div>
+                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
+                                    Usuario:
+                                </div>
+                                <div class="ContentInputI">
+                                    <div id="txtCOD_USUA"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
+                                    Nombre:
+                                </div>
+                                <div class="ContentInputI">
+                                    <div id="txtALF_NOMB"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
+                                    Email:
+                                </div>
+                                <div class="ContentInputI">
+                                    <div id="txtALF_EMAI"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
+                                    Contraseña:
+                                </div>
+                                <div class="ContentInputI">
+                                    <div id="txtALF_PASS"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
+                                    Teléfono:
+                                </div>
+                                <div class="ContentInputI">
+                                    <div id="txtALF_TELE"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
