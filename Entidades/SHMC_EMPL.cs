@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Entidades
 {
+    [DataContract]
     public class SHMC_EMPL
     {
+        [DataMember]
         public int COD_TECN { get; set; }
+
+        [DataMember]
         public string ALF_EMPL { get; set; }
     }
 }

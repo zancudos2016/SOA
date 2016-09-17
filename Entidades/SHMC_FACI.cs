@@ -1,12 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Entidades
 {
-    class SHMC_FACI
+    [DataContract]
+    public class SHMC_FACI
     {
+        [DataMember]
+        public int COD_FACI { get; set; }
+
+        [DataMember]
+        public string ALF_FACI { get; set; }
     }
 }
