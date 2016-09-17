@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructura", "Infraest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{E6396328-69DF-4951-898A-516773AA1F29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{E6396328-69DF-4951-898A-516773AA1F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6396328-69DF-4951-898A-516773AA1F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6396328-69DF-4951-898A-516773AA1F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +62,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2A05D888-AB51-4706-8E4D-B25D5E8B54B4} = {1F81BE2C-2C7A-4F67-9DAC-BBC7CFF559B3}
 		{E6396328-69DF-4951-898A-516773AA1F29} = {5CE19AE2-B2E9-4F1F-B242-46631E4169DB}
+		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14} = {5CE19AE2-B2E9-4F1F-B242-46631E4169DB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
