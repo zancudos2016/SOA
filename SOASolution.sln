@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{FBA920A8-8A0D-4608-B841-80AEC79D157E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServices", "WcfServices\WcfServices.csproj", "{C1129715-D334-437C-92AB-024191911085}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1129715-D334-437C-92AB-024191911085} = {C1129715-D334-437C-92AB-024191911085}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPOSPrototipo", "DPOSPrototipo\DPOSPrototipo.csproj", "{92A372A4-A440-4F02-8EB2-BC61E1326EC7}"
 EndProject
