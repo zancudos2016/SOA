@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../../Scripts/devextreme-localization/dx.webappjs.es.js"></script>
     <script type="text/javascript" src="../../Scripts/devextreme-modules/dx.module-widgets-base.js"></script>
     <script type="text/javascript" src="../../Scripts/devextreme-modules/dx.module-widgets-web.js"></script>
-    <script type="text/javascript" src="users.js"></script>
+    <script type="text/javascript" src="atenciones.js"></script>
 </head>
 <body style="background-color:#55597c;">
     <div id="mainContent" style="visibility:hidden;">
@@ -28,7 +28,7 @@
                         <img src="../../images/Logo.png" />
                     </div>
                     <div class="tblColumn" style="color:white;font-size:15pt;">
-                        Aplicacion para demostración
+                        Control de atenciones
                     </div>
                 </div>
             </div>
@@ -50,10 +50,10 @@
                                 <div id="cmdEdit"></div>
                             </div>
                             <div class="tblColumn" style="width: 25px; text-align: left;">
-                                <div id="cmdActivate"></div>
+                                <div id="cmdDeactivate"></div>
                             </div>
                             <div class="tblColumn" style="width: 25px; text-align: left;">
-                                <div id="cmdDeactivate"></div>
+                                <div id="cmdActivate"></div>
                             </div>
                             <div class="tblColumn" style="width: 25px; text-align: left;">
                                 <div id="cmdRevert"></div>
@@ -64,52 +64,52 @@
                     </div>
                 </div>
                 <div class="tblRow">
-                    <div id="gdvUsers"></div>
+                    <div id="gdvAtenciones"></div>
                 </div>
             </div>
-            <!-- VENTANA PARA AGREGAR USUARIO -->
-            <div id="popupUser" hidden="hidden">
+            <!-- VENTANA PARA AGREGAR ATENCIÓN -->
+            <div id="popupAtenciones" hidden="hidden">
                 <div class="ContentTable">
                     <div>
                         <div class="ContentLabelIFree" style="width:600px;">
                             <div>
-                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
-                                    Usuario:
+                                <div class="ContentLabelIFree" style="width: 150px; text-align: right;">
+                                    Codigo:
                                 </div>
                                 <div class="ContentInputI">
-                                    <div id="txtCOD_USUA"></div>
+                                    <div id="txtCOD_ATEN"></div>
                                 </div>
                             </div>
                             <div>
-                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
-                                    Nombre:
+                                <div class="ContentLabelIFree" style="width: 150px; text-align: right;">
+                                    Comercio:
                                 </div>
                                 <div class="ContentInputI">
-                                    <div id="txtALF_NOMB"></div>
+                                    <div id="txtALF_COME"></div>
                                 </div>
                             </div>
                             <div>
-                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
-                                    Email:
+                                <div class="ContentLabelIFree" style="width: 150px; text-align: right;">
+                                    Tipo atención:
                                 </div>
                                 <div class="ContentInputI">
-                                    <div id="txtALF_EMAI"></div>
+                                    <div id="cmbCOD_TIPO"></div>
                                 </div>
                             </div>
                             <div>
-                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
-                                    Contraseña:
+                                <div class="ContentLabelIFree" style="width: 150px; text-align: right;">
+                                    Fecha:
                                 </div>
                                 <div class="ContentInputI">
-                                    <div id="txtALF_PASS"></div>
+                                    <div id="deFEC_ATEN"></div>
                                 </div>
                             </div>
                             <div>
-                                <div class="ContentLabelIFree" style="width: 90px; text-align: right;">
-                                    Teléfono:
+                                <div class="ContentLabelIFree" style="width: 150px; text-align: right;">
+                                    Comentario:
                                 </div>
                                 <div class="ContentInputI">
-                                    <div id="txtALF_TELE"></div>
+                                    <div id="meALF_COME"></div>
                                 </div>
                             </div>
                         </div>
