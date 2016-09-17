@@ -39,18 +39,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -73,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ResultSetMappers.dll" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\Customize\reset.css" />
     <Content Include="Content\Customize\style.css" />
@@ -101,12 +108,16 @@
     <Content Include="Content\layouts\Popup\PopupLayout.css" />
     <Content Include="Content\layouts\Popup\PopupLayout.html" />
     <Content Include="Content\layouts\Popup\PopupLayout.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\Logo.png" />
     <Content Include="index.html" />
     <Content Include="js\index.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chartjs-modules\dx.module-core.debug.js" />
     <Content Include="Scripts\chartjs-modules\dx.module-core.js" />
     <Content Include="Scripts\chartjs-modules\dx.module-viz-charts.debug.js" />
@@ -146,6 +157,13 @@
     <Content Include="Scripts\dx.chartjs.js" />
     <Content Include="Scripts\dx.webappjs.debug.js" />
     <Content Include="Scripts\dx.webappjs.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
@@ -504,8 +522,14 @@
     <Content Include="Scripts\jquery.globalize\cultures\globalize.cultures.js" />
     <Content Include="Scripts\jquery.globalize\globalize.js" />
     <Content Include="Scripts\jquery.isloading.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jszip.js" />
     <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\vectormap-data\africa.js" />
     <Content Include="Scripts\vectormap-data\canada.js" />
@@ -528,6 +552,7 @@
     <Compile Include="App_Start\SessionControllerHandler.cs" />
     <Compile Include="App_Start\SessionHttpControllerRouteHandler.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\atencionesController.cs" />
     <Compile Include="Controllers\securityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -566,6 +591,10 @@
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj">
       <Project>{bdb5a0cd-a637-4207-af50-5d6d29e0ff14}</Project>
       <Name>LogicaNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WcfServices\WcfServices.csproj">
+      <Project>{c1129715-d334-437c-92ab-024191911085}</Project>
+      <Name>WcfServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
