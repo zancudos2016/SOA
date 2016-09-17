@@ -50,19 +50,20 @@
         $.isLoading();
         $.post('../../WA0002_ATEN', {
             COD_ATEN:$("#txtCOD_ATEN").dxTextBox("instance").option("value"),
-            ALF_COME:$("#txtALF_COME").dxTextBox("instance").option("value"),
-            COD_TIPO:$("#cmbCOD_TIPO").dxTextBox("instance").option("value"),
-            FEC_ATEN:$("#deFEC_ATEN").dxTextBox("instance").option("value"),
-            ALF_COME: $("#meALF_COME").dxTextBox("instance").option("value"),
+            ALF_PTOA:$("#txtALF_COME").dxTextBox("instance").option("value"),
+            COD_TIPO: $("#cmbCOD_TIPO").dxSelectBox("instance").option("value"),
+            FEC_ATEN:$("#deFEC_ATEN").dxDateBox("instance").option("text"),
+            ALF_COME: $("#meALF_COME").dxTextArea("instance").option("value"),
+            COD_ESTA: 1,
             NUM_ACCI:Action
         })
         .done(function (data) {
             if (data.IND_ERRO) {
-                DevExpress.ui.notify(data.ALF_ERRO, "error", 1500);
+                alert(data.ALF_ERRO);
             }
             else {
+                alert("Operación exitosa!!!.")
                 popupAtenciones.hide();
-                DevExpress.ui.notify(data.ALF_ERRO, "success", 1500);
                 UsersListInitialize();
             }
             $.isLoading("hide");
@@ -93,41 +94,42 @@
         Action = 1;
         $("#txtCOD_ATEN").dxTextBox({ width: 100, readOnly: false,value:"" });
         $("#txtALF_COME").dxTextBox({ width: 350, value: "" });
-        $("#cmbCOD_TIPO").dxSelectBox({ width: 350, value: "", dataSource: COD_TIPO_ATEN,displayExpr:"ALF_TIPO", displayValue:"COD_TIPO"  });
+        $("#cmbCOD_TIPO").dxSelectBox({ width: 350, value: 0, dataSource: COD_TIPO_ATEN,displayExpr:"ALF_TIPO", valueExpr:"COD_TIPO"  });
         $("#deFEC_ATEN").dxDateBox({ width: 150, value: new Date() });
-        $("#meALF_COME").dxTextArea({ width: 150, height:30, value: "" });
+        $("#meALF_COME").dxTextArea({ width: 250, height: 40, value: "" });
     }
     function cmdEdit() {
-        if (Dato.COD_USUA === undefined) {
-            DevExpress.ui.notify("Debe seleccionar un registro.", "error", 1500);
+        if (Dato.COD_ATEN === undefined) {
+            alert("Debe seleccionar un registro.");
         }
         else {
             popupAtenciones.show();
+            console.log(Dato);
             Action = 2;
             $("#txtCOD_ATEN").dxTextBox({ width: 100, readOnly: true, value:Dato.COD_ATEN });
-            $("#txtALF_COME").dxTextBox({ width: 350, value: Dato.ALF_COME });
-            $("#cmbCOD_TIPO").dxSelectBox({ width: 350, value: Dato.COD_TIPO, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", displayValue: "COD_TIPO" });
-            $("#deFEC_ATEN").dxDateBox({ width: 150, value: new Date(Dato.FEC_ATEN) });
-            $("#meALF_COME").dxTextArea({ width: 150, height: 30, value: Dato.ALF_OBSE });
+            $("#txtALF_COME").dxTextBox({ width: 350, value: Dato.ALF_PTOA });
+            $("#cmbCOD_TIPO").dxSelectBox({ width: 350,dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
+            $("#deFEC_ATEN").dxDateBox({ width: 150, text: Dato.FEC_ATEN });
+            $("#meALF_COME").dxTextArea({ width: 250, height: 40, value: Dato.ALF_COME });
         }
     }
 
     function cmdActivate() {
-        if (Dato.COD_USUA === undefined) {
-            DevExpress.ui.notify("Debe seleccionar un registro.", "error", 1500);
+        if (Dato.COD_ATEN === undefined) {
+            alert("Debe seleccionar un registro.");
         }
         else {
             $.isLoading();
             $.post('../../WAS0003_USUA', {
-                COD_USUA: Dato.COD_USUA,
+                COD_ATEN: Dato.COD_ATEN,
                 NUM_ACCI: 4
             })
             .done(function (data) {
                 if (data.IND_ERRO) {
-                    DevExpress.ui.notify(data.ALF_ERRO, "error", 1500);
+                    alert(data.ALF_ERRO);
                 }
                 else {
-                    DevExpress.ui.notify(data.ALF_ERRO, "success", 1500);
+                    alert(data.ALF_ERRO);
                     UsersListInitialize();
                 }
                 $.isLoading("hide");
@@ -136,21 +138,21 @@
     }
 
     function cmdDeactivate() {
-        if (Dato.COD_USUA === undefined) {
-            DevExpress.ui.notify("Debe seleccionar un registro.", "error", 1500);
+        if (Dato.COD_ATEN === undefined) {
+            alert("Debe seleccionar un registro.");
         }
         else {
             $.isLoading();
             $.post('../../WAS0003_USUA', {
-                COD_USUA: Dato.COD_USUA,
+                COD_ATEN: Dato.COD_ATEN,
                 NUM_ACCI: 3
             })
             .done(function (data) {
                 if (data.IND_ERRO) {
-                    DevExpress.ui.notify(data.ALF_ERRO, "error", 1500);
+                    alert(data.ALF_ERRO);
                 }
                 else {
-                    DevExpress.ui.notify(data.ALF_ERRO, "success", 1500);
+                    alert(data.ALF_ERRO);
                     UsersListInitialize();
                 }
                 $.isLoading("hide");
@@ -159,21 +161,21 @@
     }
 
     function cmdRevert() {
-        if (Dato.COD_USUA === undefined) {
-            DevExpress.ui.notify("Debe seleccionar un registro.", "error", 1500);
+        if (Dato.COD_ATEN === undefined) {
+            alert("Debe seleccionar un registro.");
         }
         else {
             $.isLoading();
             $.post('../../WAS0003_USUA', {
-                COD_USUA: Dato.COD_USUA,
+                COD_ATEN: Dato.COD_ATEN,
                 NUM_ACCI: 5
             })
             .done(function (data) {
                 if (data.IND_ERRO) {
-                    DevExpress.ui.notify(data.ALF_ERRO, "error", 1500);
+                    alert(data.ALF_ERRO);
                 }
                 else {
-                    DevExpress.ui.notify(data.ALF_ERRO, "success", 1500);
+                    alert(data.ALF_ERRO);
                     UsersListInitialize();
                 }
                 $.isLoading("hide");
@@ -195,20 +197,20 @@
         onClick: cmdEdit,
         width: 50
     });
-    $("#cmdActivate").dxButton({
-        hint: 'Activar',
-        icon: 'cmdActivate',
-        onClick:cmdActivate,
-        width: 50
-    });
     $("#cmdDeactivate").dxButton({
-        hint: 'Desactivar',
+        hint: 'Programar',
         icon: 'cmdDeactivate',
         onClick:cmdDeactivate,
         width: 50
     });
+    $("#cmdActivate").dxButton({
+        hint: 'Confirmar',
+        icon: 'cmdActivate',
+        onClick: cmdActivate,
+        width: 50
+    });
     $("#cmdRevert").dxButton({
-        hint: 'Revocar alta',
+        hint: 'Cancelar',
         icon: 'cmdRevert',
         onClick:cmdRevert,
         width: 50
@@ -225,40 +227,27 @@
     //--------------------------------------------------------------------------
     var gdvAtenciones_options = {
         columns: [{
-                        dataField: 'COD_USUA',
-                        caption: 'Usuario',
+                        dataField: 'COD_ATEN',
+                        caption: 'Atención',
                         width: 100,
                         alignment: 'center',
                         encodeHtml: false
                     }, {
-                        dataField: 'ALF_NOMB',
-                        caption: 'Nombre',
+                        dataField: 'ALF_PTOA',
+                        caption: 'Comercio',
                         encodeHtml: false
                     }, {
-                        dataField: 'ALF_EMAI',
-                        caption: 'E-mail',
+                        dataField: 'FEC_ATEN',
+                        caption: 'Atención',
                         encodeHtml: false
                     }, {
-                        dataField: 'IND_ALTA',
-                        caption: 'Movil',
+                        dataField: 'FEC_PROG',
+                        caption: 'Programada',
                         width: 100,
                         encodeHtml: false
                     }, {
-                        dataField: 'IND_ACTI',
-                        caption: 'Activo',
-                        width: 100,
-                        encodeHtml: false
-                    }, {
-                        dataField: 'ALF_TELE',
-                        caption: 'Teléfono',
-                        width: 100,
-                        alignment: 'center',
-                        encodeHtml: false
-                    }, {
-                        dataField: 'NUM_TOKE',
-                        caption: 'Token',
-                        width: 100,
-                        alignment:'center',
+                        dataField: 'ALF_COME',
+                        caption: 'Comentario',
                         encodeHtml: false
                     }
                     ],
@@ -280,12 +269,13 @@
             "../../WA0001_ATEN",
             { NUM_ACCI:1 })
           .done(function (oBe) {
+              console.log(oBe);
               if (!oBe.IND_ERRO) {
                   gdvAtenciones_options.dataSource = oBe.LST_ATEN;
                   $("#gdvAtenciones").dxDataGrid(gdvAtenciones_options);
               }
               else {
-                  DevExpress.ui.notify(oBe.ALF_ERRO, "error", 1500);
+                  alert(oBe.ALF_ERRO);
               }
               $.isLoading("hide");
           });

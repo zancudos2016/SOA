@@ -9,12 +9,12 @@ namespace WcfServices.Persistencia
 {
     public class AtencionDAO
     {
-        private string CadenaConexion = "Data Source=.\\SQLEXPRESS2014; Initial Catalog=DBAtenciones; Integrated Security=SSPI;";
+        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=.";
 
         public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
             SHMC_ATEN atencionCreada = null;
-            string sql = "INSERT INTO SHMC_ATEN VALUES(@COD_ATEN, @COD_PUNT_ATEN, @COD_TIPO, @FEC_ATEN, @ALF_COME, @FEC_PROG, @COD_TECN, @COD_ESTA)";
+            string sql = "INSERT INTO SHMC_ATEN (COD_ATEN,COD_TIPO,FEC_ATEN,ALF_COME,COD_ESTA,ALF_PTOA) VALUES(@COD_ATEN, @COD_TIPO, @FEC_ATEN, @ALF_COME, @COD_ESTA,@ALF_PTOA)";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
@@ -22,13 +22,11 @@ namespace WcfServices.Persistencia
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("@COD_ATEN", atencionACrear.COD_ATEN));
-                    comando.Parameters.Add(new SqlParameter("@COD_PUNT_ATEN", atencionACrear.COD_PUNT_ATEN));
                     comando.Parameters.Add(new SqlParameter("@COD_TIPO", atencionACrear.COD_TIPO));
-                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", atencionACrear.FEC_ATEN));
+                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", DateTime.Parse(atencionACrear.FEC_ATEN.Replace('/','-'))));
                     comando.Parameters.Add(new SqlParameter("@ALF_COME", atencionACrear.ALF_COME));
-                    comando.Parameters.Add(new SqlParameter("@FEC_PROG", atencionACrear.FEC_PROG));
-                    comando.Parameters.Add(new SqlParameter("@COD_TECN", atencionACrear.COD_TECN));
                     comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionACrear.COD_ESTA));
+                    comando.Parameters.Add(new SqlParameter("@ALF_PTOA", atencionACrear.ALF_PTOA));
 
                     comando.ExecuteNonQuery();
                 }
@@ -41,7 +39,8 @@ namespace WcfServices.Persistencia
         public SHMC_ATEN Obtener(int COD_ATEN)
         {
             SHMC_ATEN atencionEncontrada = null;
-            string sql = "SELECT * FROM SHMC_ATEN WHERE COD_ATEN=@COD_ATEN";
+            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG,"+
+                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ATEN=@COD_ATEN";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
@@ -56,13 +55,13 @@ namespace WcfServices.Persistencia
                             atencionEncontrada = new SHMC_ATEN()
                             {
                                 COD_ATEN = Int32.Parse(resultado["COD_ATEN"].ToString()),
-                                COD_PUNT_ATEN = Int32.Parse(resultado["COD_PUNT_ATEN"].ToString()),
                                 COD_TIPO = Int32.Parse(resultado["COD_TIPO"].ToString()),
-                                FEC_ATEN = DateTime.Parse(resultado["FEC_ATEN"].ToString()),
+                                FEC_ATEN = resultado["FEC_ATEN"].ToString(),
                                 ALF_COME = (string)resultado["ALF_COME"],
-                                FEC_PROG = DateTime.Parse(resultado["FEC_PROG"].ToString()),
-                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString())
+                                FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
+                                COD_TECN = Convert.ToInt32(resultado["COD_TECN"].ToString()),
+                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
+                                ALF_PTOA = (string)resultado["COD_ESTA"]
                             };
                         }
                     }
@@ -75,7 +74,7 @@ namespace WcfServices.Persistencia
         public SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar)
         {
             SHMC_ATEN atencionModificada = null;
-            string sql = "UPDATE SHMC_ATEN SET COD_PUNT_ATEN=@COD_PUNT_ATEN, COD_TIPO=@COD_TIPO, FEC_ATEN=@FEC_ATEN, ALF_COME=@ALF_COME, FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA WHERE COD_ATEN=@COD_ATEN";
+            string sql = "UPDATE SHMC_ATEN SET COD_TIPO=@COD_TIPO, FEC_ATEN=@FEC_ATEN, ALF_COME=@ALF_COME, FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA, ALF_PTOA=@ALF_PTOA WHERE COD_ATEN=@COD_ATEN";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
@@ -83,13 +82,13 @@ namespace WcfServices.Persistencia
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("@COD_ATEN", atencionAModificar.COD_ATEN));
-                    comando.Parameters.Add(new SqlParameter("@COD_PUNT_ATEN", atencionAModificar.COD_PUNT_ATEN));
                     comando.Parameters.Add(new SqlParameter("@COD_TIPO", atencionAModificar.COD_TIPO));
                     comando.Parameters.Add(new SqlParameter("@FEC_ATEN", atencionAModificar.FEC_ATEN));
                     comando.Parameters.Add(new SqlParameter("@ALF_COME", atencionAModificar.ALF_COME));
                     comando.Parameters.Add(new SqlParameter("@FEC_PROG", atencionAModificar.FEC_PROG));
                     comando.Parameters.Add(new SqlParameter("@COD_TECN", atencionAModificar.COD_TECN));
                     comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionAModificar.COD_ESTA));
+                    comando.Parameters.Add(new SqlParameter("@ALF_PTOA", atencionAModificar.ALF_PTOA));
 
                     comando.ExecuteNonQuery();
                 }
@@ -120,7 +119,8 @@ namespace WcfServices.Persistencia
         {
             List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
             SHMC_ATEN atencionEncontrada = null;
-            string sql = "SELECT * FROM SHMC_ATEN WHERE COD_ESTA = 1";
+            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
+                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ESTA = 1";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
@@ -134,13 +134,13 @@ namespace WcfServices.Persistencia
                             atencionEncontrada = new SHMC_ATEN()
                             {
                                 COD_ATEN = Int32.Parse(resultado["COD_ATEN"].ToString()),
-                                COD_PUNT_ATEN = Int32.Parse(resultado["COD_PUNT_ATEN"].ToString()),
                                 COD_TIPO = Int32.Parse(resultado["COD_TIPO"].ToString()),
-                                FEC_ATEN = DateTime.Parse(resultado["FEC_ATEN"].ToString()),
+                                FEC_ATEN = resultado["FEC_ATEN"].ToString(),
                                 ALF_COME = (string)resultado["ALF_COME"],
-                                FEC_PROG = DateTime.Parse(resultado["FEC_PROG"].ToString()),
+                                FEC_PROG = resultado["FEC_PROG"].ToString(),
                                 COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString())
+                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
+                                ALF_PTOA = resultado["ALF_PTOA"].ToString()
                             };
                             atencionesEncontradas.Add(atencionEncontrada);
                         }

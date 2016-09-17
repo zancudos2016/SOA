@@ -29,7 +29,7 @@ namespace WebApp.Controllers
             }
             catch (Exception ex)
             {
-                oBe.IND_ERRO = false;
+                oBe.IND_ERRO = true;
                 oBe.ALF_ERRO = ex.Message;
                 return oBe;
             }
@@ -52,7 +52,7 @@ namespace WebApp.Controllers
             }
             catch (Exception ex)
             {
-                oBe.IND_ERRO = false;
+                oBe.IND_ERRO = true;
                 oBe.ALF_ERRO = ex.Message;
                 return oBe;
             }
