@@ -9,7 +9,7 @@
 
     $("#cmbSend").click(function () {
         $.post(
-            "WASECURITYG0001_USUA",
+            "WAP0001_USUA",
             { COD_USUA: $("#Usuario").val(), ALF_PASS: $("#Password").val() })
           .done(function (oBe) {
               if (!oBe.IND_ERRO) {

@@ -22,11 +22,11 @@ namespace LogicaNegocio
         /// </summary>
         /// <param name="oBe"></param>
         /// <returns></returns>
-        public List<SHMC_USUA> Get_AP0001SNPR_LOGI_LIST(SHMC_USUA oBe)
+        public List<SHMC_USUA> Get_P0001_USUA_LIST(SHMC_USUA oBe)
         {
             try
             {
-                using (var odr = oDa.Get_AP0001SNPR_LOGI_LIST(oBe))
+                using (var odr = oDa.Get_P0001_USUA_LIST(oBe))
                 {
                     var olst = new List<SHMC_USUA>();
                     ((IList)olst).LoadFromReader<SHMC_USUA>(odr);

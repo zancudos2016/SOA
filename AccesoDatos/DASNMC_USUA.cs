@@ -27,15 +27,15 @@ namespace AccesoDatos
         /// </summary>
         /// <param name="oBe"></param>
         /// <returns></returns>
-        public IDataReader Get_AP0001SNPR_LOGI_LIST(SHMC_USUA oBe)
+        public IDataReader Get_P0001_USUA_LIST(SHMC_USUA oBe)
         {
             try
             {
                 oDb = oDg.getDataBase();
                 oCon = oDg.getConnection();
                 if (oCon.State == ConnectionState.Closed) oCon.Open();
-                var ocmd = oDb.GetStoredProcCommand("AP0001SNPR_LOGI_LIST", oBe.COD_USUA,
-                                                                            oBe.ALF_PASS);
+                var ocmd = oDb.GetStoredProcCommand("P0001_USUA_LIST", oBe.COD_USUA,
+                                                                        oBe.ALF_PASS);
                 ocmd.CommandTimeout = 2000;
                 var odr = oDb.ExecuteReader(ocmd);
                 return (odr);
