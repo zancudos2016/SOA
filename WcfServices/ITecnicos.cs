@@ -11,5 +11,7 @@ namespace WcfServices
     [ServiceContract]
     public interface ITecnicos
     {
+        [OperationContract]
+        List<SHMC_EMPL> ListarTecnicos();
     }
 }

@@ -10,5 +10,12 @@ namespace WcfServices
 {
     public class Tecnicos : ITecnicos
     {
+        private TecnicoDAO tecnicoDAO = new TecnicoDAO();
+
+        public List<Entidades.SHMC_EMPL> ListarTecnicos()
+        {
+            return tecnicoDAO.Listar();
+        }
     }
 }
+
