@@ -1,1 +1,7 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WcfServices.Atenciones" CodeBehind="Atenciones.svc.cs" %>
+﻿<%@ 
+    ServiceHost Language="C#" 
+    Debug="true" 
+    Service="WcfServices.Atenciones" 
+    CodeBehind="Atenciones.svc.cs" 
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory"
+%>

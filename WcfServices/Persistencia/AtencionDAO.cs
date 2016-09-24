@@ -9,8 +9,7 @@ namespace WcfServices.Persistencia
 {
     public class AtencionDAO
     {
-        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=123456;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS";
-        /*private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=.";*/
+        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=IMANDEV01";
 
         public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
@@ -24,7 +23,7 @@ namespace WcfServices.Persistencia
                 {
                     comando.Parameters.Add(new SqlParameter("@COD_ATEN", atencionACrear.COD_ATEN));
                     comando.Parameters.Add(new SqlParameter("@COD_TIPO", atencionACrear.COD_TIPO));
-                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", DateTime.Parse(atencionACrear.FEC_ATEN.Replace('/','-'))));
+                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", DateTime.Parse(atencionACrear.FEC_ATEN.Replace('/', '-'))));
                     comando.Parameters.Add(new SqlParameter("@ALF_COME", atencionACrear.ALF_COME));
                     comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionACrear.COD_ESTA));
                     comando.Parameters.Add(new SqlParameter("@ALF_PTOA", atencionACrear.ALF_PTOA));
@@ -40,7 +39,7 @@ namespace WcfServices.Persistencia
         public SHMC_ATEN Obtener(int COD_ATEN)
         {
             SHMC_ATEN atencionEncontrada = null;
-            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG,"+
+            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
                         "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ATEN=@COD_ATEN";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
@@ -55,14 +54,14 @@ namespace WcfServices.Persistencia
                         {
                             atencionEncontrada = new SHMC_ATEN()
                             {
-                                COD_ATEN = Int32.Parse(resultado["COD_ATEN"].ToString()),
-                                COD_TIPO = Int32.Parse(resultado["COD_TIPO"].ToString()),
+                                COD_ATEN = Convert.ToInt32(resultado["COD_ATEN"]),
+                                COD_TIPO = Convert.ToInt32(resultado["COD_TIPO"]),
                                 FEC_ATEN = resultado["FEC_ATEN"].ToString(),
-                                ALF_COME = (string)resultado["ALF_COME"],
+                                ALF_COME = Convert.ToString(resultado["ALF_COME"]),
                                 FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
                                 COD_TECN = Convert.ToInt32(resultado["COD_TECN"].ToString()),
                                 COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
-                                ALF_PTOA = (string)resultado["COD_ESTA"]
+                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"])
                             };
                         }
                     }

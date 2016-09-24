@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using WcfServices.Errores;
 
@@ -12,21 +13,24 @@ namespace WcfServices
     [ServiceContract]
     public interface IAtenciones
     {
-        [FaultContract(typeof(GeneralException))]
         [OperationContract]
-        SHMC_ATEN CrearAtencion(SHMC_ATEN atencionACrear);
+        [WebInvoke(Method = "POST", UriTemplate = "Atenciones", ResponseFormat = WebMessageFormat.Json)]
+        SHMC_ATEN Crear(SHMC_ATEN atencionACrear);
 
         [OperationContract]
-        SHMC_ATEN ObtenerAtencion(int COD_ATEN);
+        [WebInvoke(Method = "GET", UriTemplate = "Atenciones/{COD_ATEN}", ResponseFormat = WebMessageFormat.Json)]
+        SHMC_ATEN Obtener(string COD_ATEN);
 
         [OperationContract]
-        SHMC_ATEN ModificarAtencion(SHMC_ATEN atencionAModificar);
-
-        [FaultContract(typeof(GeneralException))]
-        [OperationContract]
-        int EliminarAtencion(int COD_ATEN);
+        [WebInvoke(Method = "PUT", UriTemplate = "Atenciones", ResponseFormat = WebMessageFormat.Json)]
+        SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar);
 
         [OperationContract]
-        List<SHMC_ATEN> ListarAtenciones();
+        [WebInvoke(Method = "DELETE", UriTemplate = "Atenciones/{COD_ATEN}", ResponseFormat = WebMessageFormat.Json)]
+        int Eliminar(string COD_ATEN);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Atenciones", ResponseFormat = WebMessageFormat.Json)]
+        List<SHMC_ATEN> Listar();
     }
 }
