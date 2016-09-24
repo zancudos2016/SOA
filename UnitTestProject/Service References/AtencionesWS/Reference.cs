@@ -26,6 +26,12 @@ namespace UnitTestProject.AtencionesWS {
         private string ALF_COMEField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ALF_ERROField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ALF_PTOAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int COD_ATENField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -41,10 +47,13 @@ namespace UnitTestProject.AtencionesWS {
         private int COD_TIPOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FEC_ATENField;
+        private string FEC_ATENField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FEC_PROGField;
+        private string FEC_PROGField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UnitTestProject.AtencionesWS.SHMC_ATEN[] LST_ATENField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -65,6 +74,32 @@ namespace UnitTestProject.AtencionesWS {
                 if ((object.ReferenceEquals(this.ALF_COMEField, value) != true)) {
                     this.ALF_COMEField = value;
                     this.RaisePropertyChanged("ALF_COME");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ALF_ERRO {
+            get {
+                return this.ALF_ERROField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ALF_ERROField, value) != true)) {
+                    this.ALF_ERROField = value;
+                    this.RaisePropertyChanged("ALF_ERRO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ALF_PTOA {
+            get {
+                return this.ALF_PTOAField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ALF_PTOAField, value) != true)) {
+                    this.ALF_PTOAField = value;
+                    this.RaisePropertyChanged("ALF_PTOA");
                 }
             }
         }
@@ -135,12 +170,12 @@ namespace UnitTestProject.AtencionesWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FEC_ATEN {
+        public string FEC_ATEN {
             get {
                 return this.FEC_ATENField;
             }
             set {
-                if ((this.FEC_ATENField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.FEC_ATENField, value) != true)) {
                     this.FEC_ATENField = value;
                     this.RaisePropertyChanged("FEC_ATEN");
                 }
@@ -148,14 +183,27 @@ namespace UnitTestProject.AtencionesWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FEC_PROG {
+        public string FEC_PROG {
             get {
                 return this.FEC_PROGField;
             }
             set {
-                if ((this.FEC_PROGField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.FEC_PROGField, value) != true)) {
                     this.FEC_PROGField = value;
                     this.RaisePropertyChanged("FEC_PROG");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UnitTestProject.AtencionesWS.SHMC_ATEN[] LST_ATEN {
+            get {
+                return this.LST_ATENField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LST_ATENField, value) != true)) {
+                    this.LST_ATENField = value;
+                    this.RaisePropertyChanged("LST_ATEN");
                 }
             }
         }
