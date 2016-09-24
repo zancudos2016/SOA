@@ -13,17 +13,17 @@ namespace WcfServices
     {
         private EquipoDAO equipoDAO = new EquipoDAO();
 
-        public SHMC_EQUI ObtenerAtencion(int COD_EQUI)
+        public SHMC_EQUI ObtenerEquipo(int COD_EQUI)
         {
             return equipoDAO.Obtener(COD_EQUI);
         }
 
-        public SHMC_EQUI ModificarAtencion(SHMC_EQUI equipoAModificar)
+        public SHMC_EQUI ModificarEquipo(SHMC_EQUI equipoAModificar)
         {
             return equipoDAO.Modificar(equipoAModificar);
         }
 
-        public List<Entidades.SHMC_EQUI> ListarAtenciones(int COD_TECN)
+        public List<Entidades.SHMC_EQUI> ListarEquipos(int COD_TECN)
         {
             return equipoDAO.Listar(COD_TECN);
         }

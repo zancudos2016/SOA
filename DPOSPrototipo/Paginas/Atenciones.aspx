@@ -23,7 +23,19 @@
             <tr><td class="Primario tituloWF" colspan="2">ATENCIONES - MAR 2013-04-13</td></tr>
             <tr>
                 <td>
-		            <table class="mGrid" cellspacing="1" cellpadding="0" border="0" id="gvAtenciones" style="color:#333333;width:310px;">
+                    <asp:GridView runat="server" ID="gvAtenciones">
+                        <Columns>
+                            <asp:BoundField DataField="FEC_ATEN" HeaderText="Hora"/>
+                            <asp:BoundField DataField="COD_TIPO" HeaderText="Tipo"/>
+                            <asp:BoundField DataField="ALF_PTOA" HeaderText="Dir"/>
+                            <asp:BoundField DataField="COD_ESTA" HeaderText="Estado"/>
+                        </Columns>
+                    </asp:GridView>
+                </td>
+            </tr>
+            <tr>
+                <td>
+		            <table class="mGrid" cellspacing="1" cellpadding="0" border="0" style="color:#333333;width:310px;">
 			            <tr>
 				            <th scope="col">Hora</th><th scope="col">Tipo</th><th scope="col">Dir</th><th scope="col">Estado</th>
 			            </tr>

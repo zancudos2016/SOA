@@ -13,12 +13,12 @@ namespace WcfServices
     public interface IEquipos
     {
         [OperationContract]
-        SHMC_EQUI ObtenerAtencion(int COD_EQUI);
+        SHMC_EQUI ObtenerEquipo(int COD_EQUI);
 
         [OperationContract]
-        SHMC_EQUI ModificarAtencion(SHMC_EQUI equipoAModificar);
+        SHMC_EQUI ModificarEquipo(SHMC_EQUI equipoAModificar);
 
         [OperationContract]
-        List<SHMC_EQUI> ListarAtenciones(int COD_TECN);
+        List<SHMC_EQUI> ListarEquipos(int COD_TECN);
     }
 }

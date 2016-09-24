@@ -22,7 +22,7 @@ namespace WebApp.Controllers
             try
             {
                 var sAtenciones = new Atenciones();
-                oBe.LST_ATEN = sAtenciones.ListarAtenciones();
+                //oBe.LST_ATEN = sAtenciones.ListarAtenciones();
                 oBe.IND_ERRO = false;
                 oBe.ALF_ERRO = "";
                 return oBe;
@@ -45,7 +45,7 @@ namespace WebApp.Controllers
             try
             {
                 var sAtenciones = new Atenciones();
-                oBe = sAtenciones.CrearAtencion(oBe);
+                //oBe = sAtenciones.CrearAtencion(oBe);
                 oBe.IND_ERRO = false;
                 oBe.ALF_ERRO = "";
                 return oBe;
