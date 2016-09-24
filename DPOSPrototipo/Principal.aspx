@@ -17,35 +17,34 @@
         .PanelModal{border-color: rgb(255,51,51);}
         #lblMenu ul ul a:hover {background-color: rgba(255,51,51, 0.5);}
 
+        /*DIV{border: 1px solid black;}*/
     </style>
 </head>
 <body onload="nobackbutton();">
     <div id="container">
         <header id="mainHeader">
             <div style="float:left;"></div>
-        </header>
-        <form runat="server">
-        <div id="news">
-            <asp:Image ID="imgUsuario" runat="server" width="20px" ImageUrl="~/_Images/User.png" />
-            <asp:Label ID="lblUsuario" runat="server" Text="Usuario">12345</asp:Label>
-            <br/>
-            <br/>
-            <div>
-                <a href="#">Home</a>
-                |
-                <a href="#">Cambio de Clave</a>
-                |
-                <a href="Login.aspx">Cerrar Sesión</a>
+            <form runat="server">
+            <div id="news">
+                <asp:Image ID="imgUsuario" runat="server" width="20px" ImageUrl="~/_Images/User.png" />
+                <asp:Label ID="lblUsuario" runat="server" Text="Usuario">123</asp:Label>
+                <br/>
+                <br/>
+                <div>
+                    <a href="#">Cambio de Clave</a>
+                    |
+                    <a href="Login.aspx">Cerrar Sesión</a>
+                </div>
             </div>
-        </div>
-        </form>
+            </form>
+        </header>
         <div id="Cuerpo" style="border: 0.5px solid white;">
             <div id="columnaIzquierda" class="BorderRight">
                 <div id="lblMenu" runat="server" class="side-menu">
                     <ul>
                         <li><a href='#' class='Primario desplegable js-accordionTrigger'>Atenciones</a>
                             <ul class='subnavegador is-collapsed'>
-                                <li><div><a onclick='Menu(this)' target='visor' href='/Paginas/Atenciones.aspx' data-id_permiso='1'>Atenciones</a></div></li>
+                                <li><div><a onclick='Menu(this)' target='visor' href='Paginas/Atenciones.aspx' data-id_permiso='1'>Atenciones</a></div></li>
                             </ul>
                         </li>
                         <li><a href='#' class='Primario desplegable js-accordionTrigger'>Reportes</a>
@@ -62,7 +61,7 @@
                 </div>
             </div>
             <div id="columnaDerecha">
-                <iframe name='visor' style='width:100%;height:100%;border:0px;' src="Paginas/Atenciones.aspx"></iframe>
+                <iframe name='visor' style='width:330px;height:100%;border:0px;' src="Paginas/Atenciones.aspx"></iframe>
             </div>
         </div>
         <div id="bottomContent"></div>

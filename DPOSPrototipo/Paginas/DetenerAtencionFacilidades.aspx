@@ -19,7 +19,7 @@
 </head>
 <body>
     <div>
-        <table style="width:100%;">
+        <table style="width:310px;">
             <tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>
             <tr>
                 <td>
