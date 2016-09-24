@@ -3,13 +3,16 @@
   <xs:complexType name="SHMC_ATEN">
     <xs:sequence>
       <xs:element minOccurs="0" name="ALF_COME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_ERRO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_PTOA" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COD_ATEN" type="xs:int" />
       <xs:element minOccurs="0" name="COD_ESTA" type="xs:int" />
       <xs:element minOccurs="0" name="COD_PUNT_ATEN" type="xs:int" />
       <xs:element minOccurs="0" name="COD_TECN" type="xs:int" />
       <xs:element minOccurs="0" name="COD_TIPO" type="xs:int" />
-      <xs:element minOccurs="0" name="FEC_ATEN" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="FEC_PROG" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FEC_ATEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FEC_PROG" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LST_ATEN" nillable="true" type="tns:ArrayOfSHMC_ATEN" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SHMC_ATEN" nillable="true" type="tns:SHMC_ATEN" />
