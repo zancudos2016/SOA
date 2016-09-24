@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Atenciones.svc" />
+    <Content Include="Equipos.svc" />
     <Content Include="Tecnicos.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -67,10 +68,15 @@
     <Compile Include="Atenciones.svc.cs">
       <DependentUpon>Atenciones.svc</DependentUpon>
     </Compile>
+    <Compile Include="Equipos.svc.cs">
+      <DependentUpon>Equipos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Errores\GeneralException.cs" />
     <Compile Include="IAtenciones.cs" />
+    <Compile Include="IEquipos.cs" />
     <Compile Include="ITecnicos.cs" />
     <Compile Include="Persistencia\AtencionDAO.cs" />
+    <Compile Include="Persistencia\EquipoDAO.cs" />
     <Compile Include="Persistencia\TecnicoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tecnicos.svc.cs">
