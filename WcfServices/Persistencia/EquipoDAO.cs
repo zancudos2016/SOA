@@ -15,8 +15,8 @@ namespace WcfServices.Persistencia
         {
             SHMC_EQUI equipoEncontrado = null;
             string sql = "SELECT COD_EQUI,ISNULL(ALF_SERI,'') AS ALF_SERI,COD_ESTA,COD_TIPO_UBIC," +
-            "ISNULL(COD_ALMA,0) AS COD_ALMA,ISNULL(COD_TECN,0) AS COD_TECN,ISNULL(COD_PUNT_ATEN,0) AS COD_PUNT_ATEN, " +
-            "FROM SHMC_ATEN (NOLOCK) " +
+            "ISNULL(COD_ALMA,0) AS COD_ALMA,ISNULL(COD_TECN,0) AS COD_TECN,ISNULL(COD_PUNT_ATEN,0) AS COD_PUNT_ATEN " +
+            "FROM SHMC_EQUI (NOLOCK) " +
             "WHERE COD_EQUI = @COD_EQUI";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
