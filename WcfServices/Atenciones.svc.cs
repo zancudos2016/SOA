@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,7 +15,7 @@ namespace WcfServices
     public class Atenciones : IAtenciones
     {
         private AtencionDAO atencionDAO = new AtencionDAO();
-        public Entidades.SHMC_ATEN Crear(Entidades.SHMC_ATEN atencionACrear)
+        public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
             if (atencionDAO.Obtener(atencionACrear.COD_ATEN) != null) //Ya existe
             {
@@ -24,7 +25,7 @@ namespace WcfServices
             return atencionDAO.Crear(atencionACrear);
         }
 
-        public Entidades.SHMC_ATEN Obtener(string COD_ATEN)
+        public SHMC_ATEN Obtener(string COD_ATEN)
         {
             var atencion = atencionDAO.Obtener(Convert.ToInt32(COD_ATEN));
             if (atencion == null) //No existe
@@ -34,7 +35,7 @@ namespace WcfServices
             return atencion;
         }
 
-        public Entidades.SHMC_ATEN Modificar(Entidades.SHMC_ATEN atencionAModificar)
+        public SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar)
         {
             var atencion = atencionDAO.Obtener(atencionAModificar.COD_ATEN);
             if (atencion == null) //No existe
@@ -54,9 +55,9 @@ namespace WcfServices
             return eliminado;
         }
 
-        public List<Entidades.SHMC_ATEN> Listar()
+        public List<SHMC_ATEN> Listar(string COD_TECN)
         {
-            return atencionDAO.Listar();
+            return atencionDAO.Listar(Convert.ToInt32(COD_TECN));
         }
     }
 }

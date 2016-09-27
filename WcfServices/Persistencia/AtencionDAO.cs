@@ -116,18 +116,19 @@ namespace WcfServices.Persistencia
             return eliminado;
         }
 
-        public List<SHMC_ATEN> Listar()
+        public List<SHMC_ATEN> Listar(int COD_TECN)
         {
             List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
             SHMC_ATEN atencionEncontrada = null;
             string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
-                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ESTA = 1";
+                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ESTA = 1 and COD_TECN = @COD_TECN";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
+                    comando.Parameters.Add(new SqlParameter("@COD_TECN", COD_TECN));
                     using (SqlDataReader resultado = comando.ExecuteReader())
                     {
                         while (resultado.Read())

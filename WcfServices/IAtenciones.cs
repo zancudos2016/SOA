@@ -30,7 +30,7 @@ namespace WcfServices
         int Eliminar(string COD_ATEN);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "Atenciones", ResponseFormat = WebMessageFormat.Json)]
-        List<SHMC_ATEN> Listar();
+        [WebInvoke(Method = "GET", UriTemplate = "AtencionesT/{COD_TECN}", ResponseFormat = WebMessageFormat.Json)]
+        List<SHMC_ATEN> Listar(string COD_TECN);
     }
 }

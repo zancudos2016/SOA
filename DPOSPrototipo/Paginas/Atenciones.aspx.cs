@@ -16,14 +16,20 @@ namespace DPOSPrototipo.Paginas
         protected void Page_Load(object sender, EventArgs e)
         {
             //Listar atenciones vía HTTP GET
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones");
-            req.Method = "GET";
-            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            StreamReader reader = new StreamReader(res.GetResponseStream());
-            string usuarioJson = reader.ReadToEnd();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            List<SHMC_ATEN> atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(usuarioJson);
+            List<SHMC_ATEN> atencionesObtenidas = new List<SHMC_ATEN>();
 
+            SHMC_USUA usuarioEncontrado = (SHMC_USUA)Session["usuarioEncontrado"];
+
+            if (usuarioEncontrado != null)
+            {
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/AtencionesT/" + usuarioEncontrado.COD_TECN);
+                req.Method = "GET";
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string usuarioJson = reader.ReadToEnd();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(usuarioJson);
+            }
 
             Session["atencionesObtenidas"] = atencionesObtenidas;
             gvAtenciones.DataSource = atencionesObtenidas;
