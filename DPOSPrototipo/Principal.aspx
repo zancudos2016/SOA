@@ -27,7 +27,7 @@
             <form runat="server">
             <div id="news">
                 <asp:Image ID="imgUsuario" runat="server" width="20px" ImageUrl="~/_Images/User.png" />
-                <asp:Label ID="lblUsuario" runat="server" Text="Usuario">123</asp:Label>
+                <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>
                 <br/>
                 <br/>
                 <div>

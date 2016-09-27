@@ -9,7 +9,8 @@ namespace WcfServices.Persistencia
 {
     public class EquipoDAO
     {
-        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=123456;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS";
+        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=123456;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS";
+        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
 
         public SHMC_EQUI Obtener(int COD_EQUI)
         {

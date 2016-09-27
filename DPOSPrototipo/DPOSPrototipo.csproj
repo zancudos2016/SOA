@@ -39,6 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,6 +59,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Properties\DataSources\Entidades.SHMC_EMPL.datasource" />
+    <Content Include="Properties\DataSources\Entidades.SHMC_USUA.datasource" />
+    <None Include="Service References\TecnicosWS\Tecnicos.wsdl" />
+    <None Include="Service References\TecnicosWS\Tecnicos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TecnicosWS\Tecnicos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TecnicosWS\Tecnicos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TecnicosWS\Tecnicos3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -74,6 +91,13 @@
     <Content Include="Paginas\Opcion.aspx" />
     <Content Include="Paginas\Orden.aspx" />
     <Content Include="Principal.aspx" />
+    <None Include="Service References\TecnicosWS\Tecnicos.disco" />
+    <None Include="Service References\TecnicosWS\configuration91.svcinfo" />
+    <None Include="Service References\TecnicosWS\configuration.svcinfo" />
+    <None Include="Service References\TecnicosWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="_Css\StyleGeneral.css" />
     <Content Include="_Css\StyleGridView.css" />
@@ -156,6 +180,11 @@
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\TecnicosWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -165,6 +194,9 @@
       <Project>{2a05d888-ab51-4706-8e4d-b25d5e8b54b4}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TecnicosWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

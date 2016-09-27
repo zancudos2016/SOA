@@ -18,22 +18,27 @@
     </style>
 </head>
 <body>
+    <form runat="server">
     <div>
         <table style="width:310px;">
             <tr><td class="Primario tituloWF" colspan="2">ATENCIONES - MAR 2013-04-13</td></tr>
             <tr>
                 <td>
-                    <asp:GridView runat="server" ID="gvAtenciones">
+                    <asp:GridView runat="server" ID="gvAtenciones" class="mGrid" AutoGenerateColumns="false">
                         <Columns>
-                            <asp:BoundField DataField="FEC_ATEN" HeaderText="Hora"/>
-                            <asp:BoundField DataField="COD_TIPO" HeaderText="Tipo"/>
+                            <asp:BoundField DataField="FEC_ATEN" HeaderText="Hora" DataFormatString=""/>
+                            <asp:BoundField DataField="TIPO" HeaderText="Tipo"/>
                             <asp:BoundField DataField="ALF_PTOA" HeaderText="Dir"/>
-                            <asp:BoundField DataField="COD_ESTA" HeaderText="Estado"/>
+                            <asp:TemplateField HeaderText="Estado">
+                                <ItemTemplate>
+                                    <label><%# Eval("ESTADO") %></label><a href='Detalles.aspx?DIR=<%# Eval("COD_ATEN") %>'><img src="../_Images/edit.png" style="width:16px;border-width:0px;" /></a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </td>
             </tr>
-            <tr>
+            <%--<tr>
                 <td>
 		            <table class="mGrid" cellspacing="1" cellpadding="0" border="0" style="color:#333333;width:310px;">
 			            <tr>
@@ -65,7 +70,7 @@
 			            </tr>
 		            </table>
                 </td>
-            </tr>
+            </tr>--%>
             <tr>
                 <td>
                     <fieldset class="fsConsulta" style="color:#333333;width:300px;">
@@ -105,5 +110,6 @@
             </tr>
         </table>
     </div>
+    </form>
 </body>
 </html>

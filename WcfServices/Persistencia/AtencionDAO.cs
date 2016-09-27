@@ -9,7 +9,8 @@ namespace WcfServices.Persistencia
 {
     public class AtencionDAO
     {
-        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=IMANDEV01";
+        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=IMANDEV01";
+        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
 
         public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
@@ -140,7 +141,9 @@ namespace WcfServices.Persistencia
                                 FEC_PROG = resultado["FEC_PROG"].ToString(),
                                 COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
                                 COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
-                                ALF_PTOA = resultado["ALF_PTOA"].ToString()
+                                ALF_PTOA = resultado["ALF_PTOA"].ToString(),
+                                TIPO = fnTIPO(Int32.Parse(resultado["COD_TIPO"].ToString())),
+                                ESTADO = fnESTADO(Int32.Parse(resultado["COD_ESTA"].ToString()))
                             };
                             atencionesEncontradas.Add(atencionEncontrada);
                         }
@@ -149,6 +152,54 @@ namespace WcfServices.Persistencia
             }
 
             return atencionesEncontradas;
+        }
+
+        private string fnTIPO(int COD_TIPO)
+        {
+            string tipo;
+            switch (COD_TIPO)
+            {
+                case 1:
+                    tipo = "ALTA";
+                    break;
+                case 2:
+                    tipo = "BAJA";
+                    break;
+                case 3:
+                    tipo = "CAMBIO";
+                    break;
+                case 4:
+                    tipo = "ENTRENAMIENTO";
+                    break;
+                default:
+                    tipo = "OTRO";
+                    break;
+            }
+            return tipo;
+        }
+
+        private string fnESTADO(int COD_ESTA)
+        {
+            string estado;
+            switch (COD_ESTA)
+            {
+                case 1:
+                    estado = "EXITO";
+                    break;
+                case 2:
+                    estado = "INFRAC";
+                    break;
+                case 3:
+                    estado = "ANULD";
+                    break;
+                case 4:
+                    estado = "CANCL";
+                    break;
+                default:
+                    estado = "";
+                    break;
+            }
+            return estado;
         }
     }
 }

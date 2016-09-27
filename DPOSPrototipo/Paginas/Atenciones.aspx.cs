@@ -24,6 +24,8 @@ namespace DPOSPrototipo.Paginas
             JavaScriptSerializer js = new JavaScriptSerializer();
             List<SHMC_ATEN> atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(usuarioJson);
 
+
+            Session["atencionesObtenidas"] = atencionesObtenidas;
             gvAtenciones.DataSource = atencionesObtenidas;
             gvAtenciones.DataBind();
         }
