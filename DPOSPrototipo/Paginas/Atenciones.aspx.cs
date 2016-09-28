@@ -22,13 +22,14 @@ namespace DPOSPrototipo.Paginas
 
             if (usuarioEncontrado != null)
             {
+                //HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Tecnicos.svc/Tecnicos/" + usuarioEncontrado.COD_TECN);
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/AtencionesT/" + usuarioEncontrado.COD_TECN);
                 req.Method = "GET";
                 HttpWebResponse res = (HttpWebResponse)req.GetResponse();
                 StreamReader reader = new StreamReader(res.GetResponseStream());
-                string usuarioJson = reader.ReadToEnd();
+                string atencionJson = reader.ReadToEnd();
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(usuarioJson);
+                atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(atencionJson);
             }
 
             Session["atencionesObtenidas"] = atencionesObtenidas;

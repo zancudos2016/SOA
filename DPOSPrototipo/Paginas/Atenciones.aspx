@@ -31,7 +31,7 @@
                             <asp:BoundField DataField="ALF_PTOA" HeaderText="Dir"/>
                             <asp:TemplateField HeaderText="Estado">
                                 <ItemTemplate>
-                                    <label><%# Eval("ESTADO") %></label><a href='Detalles.aspx?DIR=<%# Eval("COD_ATEN") %>'><img src="../_Images/edit.png" style="width:16px;border-width:0px;" /></a>
+                                    <label><%# Eval("ESTADO") %></label><a href='Detalles.aspx?COD_ATEN=<%# Eval("COD_ATEN") %>'><img src="../_Images/edit.png" style="width:16px;border-width:0px;" /></a>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

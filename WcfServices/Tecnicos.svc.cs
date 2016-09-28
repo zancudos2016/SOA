@@ -35,6 +35,12 @@ namespace WcfServices
 
             return usuarioEncontrado;
         }
+
+
+        public List<SHMC_ATEN> Listar(string COD_TECN)
+        {
+            return tecnicoDAO.Listar(Convert.ToInt32(COD_TECN));
+        }
     }
 }
 
