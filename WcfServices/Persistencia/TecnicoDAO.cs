@@ -10,7 +10,8 @@ namespace WcfServices.Persistencia
     public class TecnicoDAO
     {
         //private string CadenaConexion = "Data Source=.\\SQLEXPRESS; Initial Catalog=BDAtenciones; Integrated Security=SSPI;";
-        private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
+        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
+        private string CadenaConexion = "Persist Security Info=False;Integrated Security=true;Initial Catalog=BDATENCIONES;Server=localhost";
 
         public List<SHMC_EMPL> Listar()
         {
