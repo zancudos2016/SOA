@@ -15,24 +15,35 @@ namespace DPOSPrototipo.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Obtener atención vía HTTP GET
-            SHMC_ATEN atencionObtenida = new SHMC_ATEN();
-            string COD_ATEN = Request.QueryString["COD_ATEN"];
-
-            if (COD_ATEN != null)
+            if ( !Page.IsPostBack )
             {
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones/" + COD_ATEN);
-                req.Method = "GET";
-                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-                StreamReader reader = new StreamReader(res.GetResponseStream());
-                string usuarioJson = reader.ReadToEnd();
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                atencionObtenida = js.Deserialize<SHMC_ATEN>(usuarioJson);
-            }
+                //Obtener atención vía HTTP GET
+                SHMC_ATEN atencionObtenida = null;
+                string COD_ATEN = Request.QueryString["COD_ATEN"];
 
-            lblAtencion.Text = atencionObtenida.COD_ATEN.ToString();
-            lblAtencionRep.Text = atencionObtenida.COD_ATEN.ToString();
-            lblComercio.Text = atencionObtenida.ALF_COME;
+                if (COD_ATEN != null)
+                {
+                    HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones/" + COD_ATEN);
+                    req.Method = "GET";
+                    HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                    StreamReader reader = new StreamReader(res.GetResponseStream());
+                    string usuarioJson = reader.ReadToEnd();
+                    JavaScriptSerializer js = new JavaScriptSerializer();
+                    atencionObtenida = js.Deserialize<SHMC_ATEN>(usuarioJson);
+                }
+
+                if (atencionObtenida != null)
+                {
+                    lblAtencion.Text = atencionObtenida.COD_ATEN.ToString();
+                    lblComercio.Text = atencionObtenida.ALF_PTOA;
+                    lblComentario.Text = atencionObtenida.ALF_COME;
+                    lblFechaProgramada.Text = atencionObtenida.FEC_PROG;
+                    lblTipoAtencion.Text = atencionObtenida.TIPO;
+                    lblEstadoAtencion.Text = atencionObtenida.ESTADO;
+
+                    Session["atencionObtenida"] = atencionObtenida;
+                }
+            }
         }
     }
 }

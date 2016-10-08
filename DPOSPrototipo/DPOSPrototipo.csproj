@@ -62,6 +62,28 @@
   <ItemGroup>
     <Content Include="Properties\DataSources\Entidades.SHMC_EMPL.datasource" />
     <Content Include="Properties\DataSources\Entidades.SHMC_USUA.datasource" />
+    <Content Include="Properties\DataSources\Entidades.SHMC_FACI.datasource" />
+    <Content Include="Properties\DataSources\Entidades.SHMD_ATEN_REPO.datasource" />
+    <None Include="Service References\FacilidadesWS\Facilidades.wsdl" />
+    <None Include="Service References\FacilidadesWS\Facilidades.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FacilidadesWS\Facilidades1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FacilidadesWS\Facilidades2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportesWS\Reportes.wsdl" />
+    <None Include="Service References\ReportesWS\Reportes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportesWS\Reportes1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportesWS\Reportes2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UsuariosWS\Usuarios.wsdl" />
     <None Include="Service References\UsuariosWS\Usuarios.xsd">
       <SubType>Designer</SubType>
@@ -96,6 +118,20 @@
     <None Include="Service References\UsuariosWS\configuration91.svcinfo" />
     <None Include="Service References\UsuariosWS\configuration.svcinfo" />
     <None Include="Service References\UsuariosWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\FacilidadesWS\Facilidades.disco" />
+    <None Include="Service References\FacilidadesWS\configuration91.svcinfo" />
+    <None Include="Service References\FacilidadesWS\configuration.svcinfo" />
+    <None Include="Service References\FacilidadesWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ReportesWS\Reportes.disco" />
+    <None Include="Service References\ReportesWS\configuration91.svcinfo" />
+    <None Include="Service References\ReportesWS\configuration.svcinfo" />
+    <None Include="Service References\ReportesWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -181,6 +217,16 @@
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\FacilidadesWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReportesWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\UsuariosWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +243,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FacilidadesWS\" />
+    <WCFMetadataStorage Include="Service References\ReportesWS\" />
     <WCFMetadataStorage Include="Service References\UsuariosWS\" />
   </ItemGroup>
   <PropertyGroup>

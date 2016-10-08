@@ -23,8 +23,6 @@ namespace DPOSPrototipo.Paginas
             if (usuarioEncontrado != null)
             {
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones?COD_TECN=" + usuarioEncontrado.COD_TECN);
-                //HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones");
-                //?search=(COD_TECN=[parametro]
                 req.Method = "GET";
                 HttpWebResponse res = (HttpWebResponse)req.GetResponse();
                 StreamReader reader = new StreamReader(res.GetResponseStream());
@@ -33,7 +31,6 @@ namespace DPOSPrototipo.Paginas
                 atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(atencionJson);
             }
 
-            Session["atencionesObtenidas"] = atencionesObtenidas;
             gvAtenciones.DataSource = atencionesObtenidas;
             gvAtenciones.DataBind();
         }

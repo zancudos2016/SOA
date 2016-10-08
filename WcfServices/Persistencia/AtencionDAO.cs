@@ -59,7 +59,9 @@ namespace WcfServices.Persistencia
                                 FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
                                 COD_TECN = Convert.ToInt32(resultado["COD_TECN"].ToString()),
                                 COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
-                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"])
+                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"]),
+                                TIPO = fnTIPO(Int32.Parse(resultado["COD_TIPO"].ToString())),
+                                ESTADO = fnESTADO(Int32.Parse(resultado["COD_ESTA"].ToString()))
                             };
                         }
                     }

@@ -16,11 +16,23 @@
         .PanelModal{border-color: rgb(255,51,51);}
         #lblMenu ul ul a:hover {background-color: rgba(51,153,255, 0.5);}
     </style>
+    <script>
+        setTimeout(function () {
+            var txtHoraEvento = document.getElementById('txtHoraEvento');
+            var today = new Date();
+            var hh = today.getHours();
+            var mm = today.getMinutes();
+
+            today = hh + ':' + mm;
+            txtHoraEvento.value = today;
+        }, 500)
+    </script>
 </head>
 <body>
+    <form runat="server">
     <div>
         <table style="width:310px;">
-            <tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>
+            <%--<tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>--%>
             <tr>
                 <td>
 		            <table class="dGrid" cellspacing="1" cellpadding="0" border="0" id="gvDetalles" style="color:#333333;width:310px;">
@@ -28,13 +40,13 @@
 				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Opción - 16:32</td>
 			            </tr>
                         <tr>
-				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención C-097600021</td>
+				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención : <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
 			            </tr>
                         <tr>
-				            <td style="text-align:left;">Estar seguro?</td>
+				            <td style="text-align:left;">Estas seguro?</td>
                         </tr>
                         <tr>
-				            <td style="text-align:left;">Hora de este evento<input type="text" value="14:43" style="width:50px;" /></td>
+				            <td style="text-align:left;">Hora de este evento : <input id="txtHoraEvento" type="text" value="" style="width:50px;" /></td>
                         </tr>
                         <tr>
                             <td style="text-align:right;"><a href="DetenerAtencionFacilidades.aspx"><span id="btnSiguiente" class="button">Continuar</span></a></td>
@@ -44,5 +56,6 @@
             </tr>
         </table>
     </div>
+    </form>
 </body>
 </html>

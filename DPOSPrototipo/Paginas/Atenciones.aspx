@@ -16,15 +16,35 @@
         .PanelModal{border-color: rgb(255,51,51);}
         #lblMenu ul ul a:hover {background-color: rgba(255,51,51, 0.5);}
     </style>
+    <script>
+        setTimeout(function () {
+            var lblTiempo = document.getElementById('lblTiempo');
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+            lblTiempo.innerHTML = today;
+        }, 500)
+    </script>
 </head>
 <body>
     <form runat="server">
     <div>
         <table style="width:310px;">
-            <tr><td class="Primario tituloWF" colspan="2">ATENCIONES - MAR 2013-04-13</td></tr>
+            <tr><td class="Primario tituloWF" colspan="2">ATENCIONES - <label id="lblTiempo"></label></td></tr>
             <tr>
                 <td>
-                    <asp:GridView runat="server" ID="gvAtenciones" class="mGrid" AutoGenerateColumns="false">
+                    <asp:GridView runat="server" ID="gvAtenciones" CssClass="mGrid" AutoGenerateColumns="false">
                         <Columns>
                             <asp:BoundField DataField="FEC_ATEN" HeaderText="Hora" DataFormatString=""/>
                             <asp:BoundField DataField="TIPO" HeaderText="Tipo"/>

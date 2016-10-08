@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Detalles.aspx.cs" Inherits="DPOSPrototipo.Paginas.Detalles" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetenerAtencionMotivo.aspx.cs" Inherits="DPOSPrototipo.Paginas.DetenerAtencionMotivo" %>
 
 <!DOCTYPE html>
 
@@ -34,18 +34,18 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form runat="server">
     <div>
         <table style="width:310px;">
-            <tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>
+            <%--<tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>--%>
             <tr>
                 <td>
 		            <table class="dGrid" cellspacing="1" cellpadding="0" border="0" id="gvDetalles" style="color:#333333;width:310px;">
 			            <tr>
-				            <td colspan="2" style="border:2px solid black;background:#CC0000; text-align:center;color:white;">Motivo - MAR 2013-04-13 - 16:00</td>
+				            <td colspan="2" style="border:2px solid black;background:#CC0000; text-align:center;color:white;">MOTIVO - MAR 2013-04-13 - 16:00</td>
 			            </tr>
                         <tr>
-				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención C-097600021</td>
+				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención : <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
 			            </tr>
                         <tr>
 				            <td class="auto-style6"></td>
@@ -59,9 +59,9 @@
                             
                         </tr>
                         <tr>
-				            <td class="auto-style7">Motivo del &lt;Tecnico/Capacitador&gt;</td>
+				            <td class="auto-style7">Motivo del &lt;Técnico/Capacitador&gt;</td>
 			           <td class="auto-style8">
-                           <asp:Image ID="Image2" runat="server" ImageUrl="~/_Images/apply.gif" />
+                           <asp:Image ID="Image2" runat="server" ImageUrl="~/_Images/apply_c.gif" />
                             </td>
                              </tr>
                         <tr>
@@ -76,7 +76,7 @@
 			            </tr>
                         <tr>
 				            <td colspan="2">
-                                <asp:TextBox ID="TextBox1" runat="server" Height="79px" Width="401px" style="margin-right: 0px">Operador me dijo.</asp:TextBox>
+                                <asp:TextBox ID="txtComentario" runat="server" Height="79px" Width="401px" style="margin-right: 0px"></asp:TextBox>
                             </td>
 			            </tr>
                         <tr>
@@ -85,11 +85,11 @@
                         <tr>
 				            <td class="auto-style6">
                                 &nbsp;</td>
-                            <td class="auto-style7">
-                                <td style="text-align:left;"><a href="Confirmacion.aspx"><span id="btnOpción" class="button">Siguiente</span></a></td>
+                            <td class="auto-style7" style="text-align:left;">
+                                <a href="Confirmacion.aspx"><span id="btnOpción" class="button" style="width:100px;">Siguiente</span></a>
                             </td>
 			            </tr>
-                        </table>
+                    </table>
                 </td>
             </tr>
         </table>

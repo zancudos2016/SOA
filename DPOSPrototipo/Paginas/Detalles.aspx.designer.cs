@@ -22,15 +22,6 @@ namespace DPOSPrototipo.Paginas {
         protected global::System.Web.UI.WebControls.Label lblAtencion;
         
         /// <summary>
-        /// lblAtencionRep control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAtencionRep;
-        
-        /// <summary>
         /// lblComercio control.
         /// </summary>
         /// <remarks>
@@ -38,5 +29,41 @@ namespace DPOSPrototipo.Paginas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblComercio;
+        
+        /// <summary>
+        /// lblComentario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblComentario;
+        
+        /// <summary>
+        /// lblFechaProgramada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaProgramada;
+        
+        /// <summary>
+        /// lblTipoAtencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoAtencion;
+        
+        /// <summary>
+        /// lblEstadoAtencion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstadoAtencion;
     }
 }

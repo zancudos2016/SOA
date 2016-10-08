@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,15 @@ namespace DPOSPrototipo.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                SHMC_ATEN atencionObtenida = (SHMC_ATEN)Session["atencionObtenida"];
 
+                if (atencionObtenida != null)
+                {
+                    lblAtencion.Text = atencionObtenida.COD_ATEN.ToString();
+                }
+            }
         }
     }
 }
