@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9e0bf1d2-65f2-42ab-a161-447498f1a823" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:25097/Tecnicos.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Tecnicos.xsd" MetadataType="Schema" ID="67f8ac40-9d93-45a0-b94c-c18c16b706ae" SourceId="1" SourceUrl="http://localhost:25097/Tecnicos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Tecnicos1.xsd" MetadataType="Schema" ID="51a3cb51-2ebf-44f1-8f25-82dcaeea3f87" SourceId="1" SourceUrl="http://localhost:25097/Tecnicos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Tecnicos.wsdl" MetadataType="Wsdl" ID="fb48f288-d454-4981-864f-85db34855d7a" SourceId="1" SourceUrl="http://localhost:25097/Tecnicos.svc?wsdl" />
+    <MetadataFile FileName="Tecnicos2.xsd" MetadataType="Schema" ID="3b1a3c06-bb29-4d93-aa81-8e369dd9e93c" SourceId="1" SourceUrl="http://localhost:25097/Tecnicos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Tecnicos.disco" MetadataType="Disco" ID="cb46361b-df11-456c-b0c1-9a37aa72a564" SourceId="1" SourceUrl="http://localhost:25097/Tecnicos.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

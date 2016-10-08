@@ -22,6 +22,18 @@ namespace WcfServices
                 throw new WebFaultException<string>("La atención ya existe", HttpStatusCode.NotAcceptable);
             }
 
+            //var oBe = atencionDAO.Obtener(atencionACrear.ALF_PTOA);
+
+            //if (oBe.COD_TIPO == 1 && atencionACrear.COD_TIPO == 1) //El comercio ya fue instalado
+            //{
+            //    throw new WebFaultException<string>("El comercio ya fue instalado", HttpStatusCode.NotAcceptable);
+            //}
+
+            //if (atencionACrear.COD_TIPO==1 || atencionACrear.COD_TIPO==2) //El comercio debe tener una instalación 
+            //{
+            //    throw new WebFaultException<string>("El comercio ya fue instalado", HttpStatusCode.NotAcceptable);
+            //}
+
             return atencionDAO.Crear(atencionACrear);
         }
 
