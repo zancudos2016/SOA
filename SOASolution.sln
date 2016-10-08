@@ -7,12 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServices", "WcfServices\WcfServices.csproj", "{C1129715-D334-437C-92AB-024191911085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPOSPrototipo", "DPOSPrototipo\DPOSPrototipo.csproj", "{92A372A4-A440-4F02-8EB2-BC61E1326EC7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C1129715-D334-437C-92AB-024191911085} = {C1129715-D334-437C-92AB-024191911085}
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPOSPrototipo", "DPOSPrototipo\DPOSPrototipo.csproj", "{92A372A4-A440-4F02-8EB2-BC61E1326EC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{1F81BE2C-2C7A-4F67-9DAC-BBC7CFF559B3}"
 EndProject
@@ -23,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{E6396328-69DF-4951-898A-516773AA1F29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaNegocio", "LogicaNegocio\LogicaNegocio.csproj", "{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServices", "TestServices\TestServices.csproj", "{105B371F-A1F7-469C-9BA2-CC545EE84C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +38,6 @@ Global
 		{C1129715-D334-437C-92AB-024191911085}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1129715-D334-437C-92AB-024191911085}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1129715-D334-437C-92AB-024191911085}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F72DD322-8FBC-4B48-B6F6-33373A8F53CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92A372A4-A440-4F02-8EB2-BC61E1326EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,6 +54,10 @@ Global
 		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB5A0CD-A637-4207-AF50-5D6D29E0FF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105B371F-A1F7-469C-9BA2-CC545EE84C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105B371F-A1F7-469C-9BA2-CC545EE84C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105B371F-A1F7-469C-9BA2-CC545EE84C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105B371F-A1F7-469C-9BA2-CC545EE84C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

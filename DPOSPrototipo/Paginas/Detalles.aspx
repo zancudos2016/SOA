@@ -28,7 +28,7 @@
 				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Detalles - MAR 2013-04-13 - 16:00</td>
 			            </tr>
                         <tr>
-				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención C-097600021</td>
+				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
 			            </tr>
                         <tr>
 				            <td style="text-align:left;"><a href="Opcion.aspx"><span id="btnOpción" class="button">Continuar</span></a></td>
@@ -39,11 +39,11 @@
 			            </tr>
                         <tr style="border-bottom: 1px solid black;">
 				            <td>DIR</td>
-                            <td style="color:#ff9999;">DDDD08080</td>
+                            <td style="color:#ff9999;"><asp:Label ID="lblAtencionRep" runat="server"></asp:Label></td>
 			            </tr>
                         <tr style="border-bottom: 1px solid black;">
 				            <td>Comercio</td>
-                            <td style="color:#ff9999;">RVC XXXXXX</td>
+                            <td style="color:#ff9999;"><asp:Label ID="lblComercio" runat="server"></asp:Label></td>
 			            </tr>
                         <tr style="border-bottom: 1px solid black;">
 				            <td>Dirección</td>

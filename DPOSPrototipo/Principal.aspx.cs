@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,12 @@ namespace DPOSPrototipo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SHMC_USUA usuarioEncontrado = (SHMC_USUA)Session["usuarioEncontrado"];
 
+            if (usuarioEncontrado != null)
+            {
+                lblUsuario.Text = usuarioEncontrado.COD_USUA;
+            }
         }
     }
 }

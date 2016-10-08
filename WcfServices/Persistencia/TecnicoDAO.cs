@@ -9,15 +9,44 @@ namespace WcfServices.Persistencia
 {
     public class TecnicoDAO
     {
-        private string CadenaConexion = "Data Source=.\\SQLEXPRESS2014; Initial Catalog=DBAtenciones; Integrated Security=SSPI;";
+        public SHMC_EMPL Obtener(int COD_TECN)
+        {
+            SHMC_EMPL tecnicoEncontrado = null;
+            string sql = "SELECT COD_TECN, ISNULL(ALF_EMPL,'') AS ALF_EMPL " +
+            "FROM SHMC_EMPL (NOLOCK) " +
+            "WHERE COD_TECN = @COD_TECN";
+
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@COD_TECN", COD_TECN));
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        if (resultado.Read())
+                        {
+                            tecnicoEncontrado = new SHMC_EMPL()
+                            {
+                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
+                                ALF_EMPL = (string)resultado["ALF_EMPL"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+
+            return tecnicoEncontrado;
+        }
 
         public List<SHMC_EMPL> Listar()
         {
-            List<SHMC_EMPL> tecnicosEncontradas = new List<SHMC_EMPL>();
-            SHMC_EMPL tecnicoEncontrada = null;
-            string sql = "SELECT * FROM SHMC_EMPL";
+            List<SHMC_EMPL> tecnicosEncontrados = new List<SHMC_EMPL>();
+            SHMC_EMPL tecnicoEncontrado = null;
+            string sql = "SELECT COD_TECN, ISNULL(ALF_EMPL,'') AS ALF_EMPL " +
+            "FROM SHMC_EMPL (NOLOCK) ";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -26,18 +55,18 @@ namespace WcfServices.Persistencia
                     {
                         while (resultado.Read())
                         {
-                            tecnicoEncontrada = new SHMC_EMPL()
+                            tecnicoEncontrado = new SHMC_EMPL()
                             {
                                 COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                                ALF_EMPL = (string)resultado["ALF_EMPL"],
+                                ALF_EMPL = (string)resultado["ALF_EMPL"].ToString()
                             };
-                            tecnicosEncontradas.Add(tecnicoEncontrada);
+                            tecnicosEncontrados.Add(tecnicoEncontrado);
                         }
                     }
                 }
             }
 
-            return tecnicosEncontradas;
+            return tecnicosEncontrados;
         }
     }
 }

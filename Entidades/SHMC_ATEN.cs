@@ -18,8 +18,8 @@ namespace Entidades
         public int COD_PUNT_ATEN { get; set; }
 
         [DataMember]
-        public int COD_TIPO { get; set; }
-
+        public int COD_TIPO { get;set; }
+        
         [DataMember]
         public string FEC_ATEN { get; set; }
 
@@ -33,7 +33,8 @@ namespace Entidades
         public int COD_TECN { get; set; }
 
         [DataMember]
-        public int COD_ESTA { get; set; }
+        public int COD_ESTA { get;set; }
+
         [DataMember]
         public string ALF_PTOA { get; set; }
         [DataMember]
@@ -42,5 +43,11 @@ namespace Entidades
         public bool IND_ERRO { get; set; }
         [DataMember]
         public string ALF_ERRO { get; set; }
+
+        [DataMember]
+        public string TIPO { get; set; }
+
+        [DataMember]
+        public string ESTADO { get; set; }
     }
 }

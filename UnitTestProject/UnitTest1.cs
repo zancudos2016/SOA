@@ -1,5 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Net;
+using System.IO;
+using Entidades;
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace UnitTestProject
 {
@@ -29,6 +34,19 @@ namespace UnitTestProject
             Assert.AreEqual(DateTime.Parse("2016-09-05".ToString()), atencionCreada.FEC_PROG);
             Assert.AreEqual(1, atencionCreada.COD_TECN);
             Assert.AreEqual(1, atencionCreada.COD_ESTA);
+        }
+
+        [TestMethod]
+        public void ListarAtenciones()
+        {
+            //Listar atenciones vía HTTP GET
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones");
+            req.Method = "GET";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string usuarioJson = reader.ReadToEnd();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<SHMC_ATEN> atencionesObtenidas = js.Deserialize<List<SHMC_ATEN>>(usuarioJson);
         }
     }
 }

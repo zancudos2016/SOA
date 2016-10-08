@@ -32,5 +32,11 @@ namespace WcfServices
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Atenciones", ResponseFormat = WebMessageFormat.Json)]
         List<SHMC_ATEN> Listar();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Atenciones?COD_TECN={COD_TECN}", ResponseFormat = WebMessageFormat.Json)]
+        List<SHMC_ATEN> ListarPorTecnico(string COD_TECN);
+
+        //?search=(COD_TECN=[parametro])
     }
 }

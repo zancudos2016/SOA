@@ -26,17 +26,19 @@
         function ValidarIngreso() {
             var username = document.getElementById('username');
             var password = document.getElementById('password');
-            var lblMensaje = document.getElementById('lblMensaje');
+            var lblMensaje = document.getElementById('<%= lblMensaje.ClientID %>');
 
-            if (username.value != "123" && password.value != "123") {
-                lblMensaje.innerHTML = "Usuario y Clave incorrectos";
+            if (username.value == "" || password.value == "") {
+                lblMensaje.innerHTML = "Ingrese los datos correctamente.";
 
                 setTimeout(function () {
                     var lblMensaje = document.getElementById('lblMensaje');
                     lblMensaje.innerHTML = "";
                 }, 1500);
+
+                return false;
             } else {
-                window.location = "Principal.aspx";
+                return true;
             }
         }
     </script>
@@ -65,10 +67,10 @@
                                 <input id="password" name="password" required="required" type="password" placeholder="Clave" autocomplete="off"/> 
                             </p>
                             <div style="text-align:center;font-size:12px;font-weight:bold;color:red;">
-                                &nbsp;<label id="lblMensaje"></label>
+                                &nbsp;<asp:Label ID="lblMensaje" runat="server"></asp:Label>
                             </div>
-                            <p class="login button"> 
-                                <input id="btnIngresar" type="button" value="Ingresar" onclick="ValidarIngreso();"/>
+                            <p class="login button">
+                                <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" OnClientClick="return ValidarIngreso();" OnClick="btnIngresar_Click" />
 						    </p>
                         </div>
                     </div>
