@@ -16,6 +16,7 @@
     //--------------------------------------------------------------------------
     Globalize.culture('es-PE');
     var Heigth = $(window).height() - 200;
+    var LST_TECN = [];
     //--------------------------------------------------------------------------
     //OPCIONES DEL MENU PRINCIPAL
     //--------------------------------------------------------------------------
@@ -44,7 +45,7 @@
     //--------------------------------------------------------------------------
     var COD_TIPO_ATEN = [{ COD_TIPO: 1, ALF_TIPO: "Instalación" }, { COD_TIPO: 2, ALF_TIPO: "Desinstalación" }, { COD_TIPO: 3, ALF_TIPO: "Incidencia" }]
     //--------------------------------------------------------------------------
-    //INICIALIZAR CONTROLES PARA LA VENTANA AGREGAR NUEVA ATENCIÓN
+    //GARDAR LA ATENCIÓN
     //--------------------------------------------------------------------------
     function clickSavepopupAtenciones() {
         $.isLoading();
@@ -57,13 +58,15 @@
         }
         var data = {};
         $.post(uri, {
-            COD_ATEN:$("#txtCOD_ATEN").dxTextBox("instance").option("value"),
-            ALF_PTOA:$("#txtALF_COME").dxTextBox("instance").option("value"),
+            COD_ATEN: $("#txtCOD_ATEN").dxTextBox("instance").option("value"),
+            ALF_PTOA: $("#txtALF_COME").dxTextBox("instance").option("value"),
             COD_TIPO: $("#cmbCOD_TIPO").dxSelectBox("instance").option("value"),
-            FEC_ATEN:$("#deFEC_ATEN").dxDateBox("instance").option("text"),
-            ALF_COME: $("#meALF_COME").dxTextArea("instance").option("value"),
-            COD_ESTA: 1,
-            NUM_ACCI:Action
+            FEC_ATEN: $("#deFEC_ATEN").dxDateBox("instance").option("text"),
+            FEC_PROG: $("#deFEC_PROG").dxDateBox("instance").option("text"),
+            COD_TECN: $("#cmbCOD_TECN").dxSelectBox("instance").option("value"),
+            ALF_COME: $("#txtALF_COME_ATEN").dxTextBox("instance").option("value"),
+            COD_ESTA: Action === 1 ? 1 : Action - 1,
+            NUM_ACCI: Action
         })
         .done(function (data) {
             console.log(data);
@@ -105,8 +108,8 @@
         $("#txtALF_COME").dxTextBox({ width: 350, readOnly: false, value: "" });
         $("#cmbCOD_TIPO").dxSelectBox({ width: 350, readOnly: false, value: 0, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO" });
         $("#deFEC_ATEN").dxDateBox({ width: 150, readOnly: false, value: new Date() });
-        $("#meALF_COME").dxTextArea({ width: 250, readOnly: false, height: 40, value: "" });
-        $("#cmbCOD_TECN").dxSelectBox({ width: 350, readOnly: true, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
+        $("#txtALF_COME_ATEN").dxTextBox({ width: 350, readOnly: false, value: "" });
+        $("#cmbCOD_TECN").dxSelectBox({ width: 350, readOnly: true, dataSource: LST_TECN, displayExpr: "ALF_EMPL", valueExpr: "COD_TECN", value: 0 });
         $("#deFEC_PROG").dxDateBox({ width: 150, readOnly: true, value: null });
     }
     function cmdEdit() {
@@ -115,15 +118,15 @@
         }
         else {
             popupAtenciones.show();
-            console.log(Dato);
             Action = 2;
             $("#txtCOD_ATEN").dxTextBox({ width: 100, readOnly: true, value: Dato.COD_ATEN });
             $("#txtALF_COME").dxTextBox({ width: 350, readOnly: false, value: Dato.ALF_PTOA });
             $("#cmbCOD_TIPO").dxSelectBox({ width: 350, readOnly: false, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
             $("#deFEC_ATEN").dxDateBox({ width: 150, readOnly: false, text: Dato.FEC_ATEN });
-            $("#meALF_COME").dxTextArea({ width: 250, readOnly: false, height: 40, value: Dato.ALF_COME });
-            $("#cmbCOD_TECN").dxSelectBox({ width: 350, readOnly: true, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
-            $("#deFEC_PROG").dxDateBox({ width: 150, readOnly: true, text: Dato.FEC_PROG });
+            $("#txtALF_COME_ATEN").dxTextBox({ width: 350, readOnly: false, value: Dato.ALF_COME });
+            $("#cmbCOD_TECN").dxSelectBox({ width: 350, readOnly: true, dataSource: LST_TECN, displayExpr: "ALF_EMPL", valueExpr: "COD_TECN", value: Dato.COD_TECN });
+            $("#deFEC_PROG").dxDateBox({ width: 150, readOnly: true, value: Dato.FEC_PROG === "" ? null : new Date(Dato.FEC_PROG) });
+            console.log(Dato.FEC_PROG);
         }
     }
     function cmdProgram() {
@@ -132,61 +135,14 @@
         }
         else {
             popupAtenciones.show();
-            console.log(Dato);
             Action = 3;
             $("#txtCOD_ATEN").dxTextBox({ width: 100, readOnly: true, value: Dato.COD_ATEN });
             $("#txtALF_COME").dxTextBox({ width: 350, readOnly: true, value: Dato.ALF_PTOA });
             $("#cmbCOD_TIPO").dxSelectBox({ width: 350, readOnly: true, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
             $("#deFEC_ATEN").dxDateBox({ width: 150, readOnly: true, text: Dato.FEC_ATEN });
-            $("#meALF_COME").dxTextArea({ width: 250, readOnly: true, height: 40, value: Dato.ALF_COME });
-            $("#cmbCOD_TECN").dxSelectBox({ width: 350, dataSource: COD_TIPO_ATEN, displayExpr: "ALF_TIPO", valueExpr: "COD_TIPO", value: Dato.COD_TIPO });
-            $("#deFEC_PROG").dxDateBox({ width: 150, text: Dato.FEC_PROG });
-        }
-    }
-
-    function cmdActivate() {
-        if (Dato.COD_ATEN === undefined) {
-            alert("Debe seleccionar un registro.");
-        }
-        else {
-            $.isLoading();
-            $.post('../../WAS0003_USUA', {
-                COD_ATEN: Dato.COD_ATEN,
-                NUM_ACCI: 4
-            })
-            .done(function (data) {
-                if (data.IND_ERRO) {
-                    alert(data.ALF_ERRO);
-                }
-                else {
-                    alert(data.ALF_ERRO);
-                    UsersListInitialize();
-                }
-                $.isLoading("hide");
-            });
-        }
-    }
-
-    function cmdRevert() {
-        if (Dato.COD_ATEN === undefined) {
-            alert("Debe seleccionar un registro.");
-        }
-        else {
-            $.isLoading();
-            $.post('../../WAS0003_USUA', {
-                COD_ATEN: Dato.COD_ATEN,
-                NUM_ACCI: 5
-            })
-            .done(function (data) {
-                if (data.IND_ERRO) {
-                    alert(data.ALF_ERRO);
-                }
-                else {
-                    alert(data.ALF_ERRO);
-                    UsersListInitialize();
-                }
-                $.isLoading("hide");
-            });
+            $("#txtALF_COME_ATEN").dxTextBox({ width: 350, readOnly: true, value: Dato.ALF_COME });
+            $("#cmbCOD_TECN").dxSelectBox({ width: 350, readOnly: false, dataSource: LST_TECN, displayExpr: "ALF_EMPL", valueExpr: "COD_TECN", value: Dato.COD_TECN });
+            $("#deFEC_PROG").dxDateBox({ width: 150, readOnly: false, value: Dato.FEC_PROG === "" ? null : new Date(Dato.FEC_PROG) });
         }
     }
     //--------------------------------------------------------------------------
@@ -208,18 +164,6 @@
         hint: 'Programar',
         icon: 'cmdProgram',
         onClick:cmdProgram,
-        width: 50
-    });
-    $("#cmdActivate").dxButton({
-        hint: 'Confirmar',
-        icon: 'cmdActivate',
-        onClick: cmdActivate,
-        width: 50
-    });
-    $("#cmdRevert").dxButton({
-        hint: 'Cancelar',
-        icon: 'cmdRevert',
-        onClick:cmdRevert,
         width: 50
     });
     //--------------------------------------------------------------------------
@@ -274,7 +218,7 @@
         $.isLoading();
         $.post(
             "../../WA0001_ATEN",
-            { NUM_ACCI:1 })
+            { NUM_ACCI: 1 })
           .done(function (oBe) {
               console.log(oBe);
               if (!oBe.IND_ERRO) {
@@ -285,6 +229,17 @@
                   alert(oBe.ALF_ERRO);
               }
               $.isLoading("hide");
+          });
+    }
+    //--------------------------------------------------------------------------
+    //POBLAR LA LISTA TÉCNICOS
+    //--------------------------------------------------------------------------
+    technicianListInitialize();
+    function technicianListInitialize() {
+        $.post(
+            "../../WA0004_ATEN")
+          .done(function (oList) {
+              LST_TECN = oList;
           });
     }
 });
