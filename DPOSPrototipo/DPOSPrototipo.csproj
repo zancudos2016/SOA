@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,17 +62,17 @@
   <ItemGroup>
     <Content Include="Properties\DataSources\Entidades.SHMC_EMPL.datasource" />
     <Content Include="Properties\DataSources\Entidades.SHMC_USUA.datasource" />
-    <None Include="Service References\TecnicosWS\Tecnicos.wsdl" />
-    <None Include="Service References\TecnicosWS\Tecnicos.xsd">
+    <None Include="Service References\UsuariosWS\Usuarios.wsdl" />
+    <None Include="Service References\UsuariosWS\Usuarios.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TecnicosWS\Tecnicos1.xsd">
+    <None Include="Service References\UsuariosWS\Usuarios1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TecnicosWS\Tecnicos2.xsd">
+    <None Include="Service References\UsuariosWS\Usuarios2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TecnicosWS\Tecnicos3.xsd">
+    <None Include="Service References\UsuariosWS\Usuarios3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -91,10 +92,10 @@
     <Content Include="Paginas\Opcion.aspx" />
     <Content Include="Paginas\Orden.aspx" />
     <Content Include="Principal.aspx" />
-    <None Include="Service References\TecnicosWS\Tecnicos.disco" />
-    <None Include="Service References\TecnicosWS\configuration91.svcinfo" />
-    <None Include="Service References\TecnicosWS\configuration.svcinfo" />
-    <None Include="Service References\TecnicosWS\Reference.svcmap">
+    <None Include="Service References\UsuariosWS\Usuarios.disco" />
+    <None Include="Service References\UsuariosWS\configuration91.svcinfo" />
+    <None Include="Service References\UsuariosWS\configuration.svcinfo" />
+    <None Include="Service References\UsuariosWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -180,7 +181,7 @@
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\TecnicosWS\Reference.cs">
+    <Compile Include="Service References\UsuariosWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -196,7 +197,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\TecnicosWS\" />
+    <WCFMetadataStorage Include="Service References\UsuariosWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

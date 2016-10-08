@@ -9,16 +9,12 @@ namespace WcfServices.Persistencia
 {
     public class AtencionDAO
     {
-        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=IMANDEV01";
-        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
-        private string CadenaConexion = "Persist Security Info=False;Integrated Security=true;Initial Catalog=BDATENCIONES;Server=localhost";
-
         public SHMC_ATEN Crear(SHMC_ATEN atencionACrear)
         {
             SHMC_ATEN atencionCreada = null;
             string sql = "INSERT INTO SHMC_ATEN (COD_ATEN,COD_TIPO,FEC_ATEN,ALF_COME,COD_ESTA,ALF_PTOA) VALUES(@COD_ATEN, @COD_TIPO, @FEC_ATEN, @ALF_COME, @COD_ESTA,@ALF_PTOA)";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -44,7 +40,7 @@ namespace WcfServices.Persistencia
             string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
                         "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ATEN=@COD_ATEN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -78,7 +74,7 @@ namespace WcfServices.Persistencia
             SHMC_ATEN atencionModificada = null;
             string sql = "UPDATE SHMC_ATEN SET COD_TIPO=@COD_TIPO, FEC_ATEN=@FEC_ATEN, ALF_COME=@ALF_COME, FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA, ALF_PTOA=@ALF_PTOA WHERE COD_ATEN=@COD_ATEN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -104,7 +100,7 @@ namespace WcfServices.Persistencia
         {
             string sql = "DELETE FROM SHMC_ATEN WHERE COD_ATEN = @COD_ATEN";
             int eliminado = 0;
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -117,14 +113,59 @@ namespace WcfServices.Persistencia
             return eliminado;
         }
 
+        public List<SHMC_ATEN> Listar()
+        {
+            List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
+            SHMC_ATEN atencionEncontrada = null;
+            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN," +
+            "ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
+            "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA " +
+            "FROM SHMC_ATEN (NOLOCK) " +
+            "WHERE COD_ESTA = 1";
+
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    //comando.Parameters.Add(new SqlParameter("@COD_TECN", COD_TECN));
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            atencionEncontrada = new SHMC_ATEN()
+                            {
+                                COD_ATEN = Int32.Parse(resultado["COD_ATEN"].ToString()),
+                                COD_TIPO = Int32.Parse(resultado["COD_TIPO"].ToString()),
+                                FEC_ATEN = resultado["FEC_ATEN"].ToString(),
+                                ALF_COME = (string)resultado["ALF_COME"],
+                                FEC_PROG = resultado["FEC_PROG"].ToString(),
+                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
+                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
+                                ALF_PTOA = resultado["ALF_PTOA"].ToString(),
+                                TIPO = fnTIPO(Int32.Parse(resultado["COD_TIPO"].ToString())),
+                                ESTADO = fnESTADO(Int32.Parse(resultado["COD_ESTA"].ToString()))
+                            };
+                            atencionesEncontradas.Add(atencionEncontrada);
+                        }
+                    }
+                }
+            }
+
+            return atencionesEncontradas;
+        }
+
         public List<SHMC_ATEN> Listar(int COD_TECN)
         {
             List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
             SHMC_ATEN atencionEncontrada = null;
-            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
-                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ESTA = 1 and COD_TECN = @COD_TECN";
+            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN," +
+            "ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
+            "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA " +
+            "FROM SHMC_ATEN (NOLOCK) " +
+            "WHERE COD_ESTA = 2 and COD_TECN = @COD_TECN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))

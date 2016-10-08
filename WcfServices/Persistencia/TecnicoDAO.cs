@@ -9,17 +9,13 @@ namespace WcfServices.Persistencia
 {
     public class TecnicoDAO
     {
-        //private string CadenaConexion = "Data Source=.\\SQLEXPRESS; Initial Catalog=BDAtenciones; Integrated Security=SSPI;";
-        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
-        private string CadenaConexion = "Persist Security Info=False;Integrated Security=true;Initial Catalog=BDATENCIONES;Server=localhost";
-
         public List<SHMC_EMPL> Listar()
         {
             List<SHMC_EMPL> tecnicosEncontradas = new List<SHMC_EMPL>();
             SHMC_EMPL tecnicoEncontrada = null;
             string sql = "SELECT * FROM SHMC_EMPL";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -42,36 +38,6 @@ namespace WcfServices.Persistencia
             return tecnicosEncontradas;
         }
 
-        public SHMC_USUA Login(SHMC_USUA usuarioABuscar)
-        {
-            SHMC_USUA usuarioEncontrado = null;
-            string sql = "EXEC P0001_USUA_LIST @COD_USUA, @ALF_PASS";
-
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
-            {
-                conexion.Open();
-                using (SqlCommand comando = new SqlCommand(sql, conexion))
-                {
-                    comando.Parameters.Add(new SqlParameter("@COD_USUA", usuarioABuscar.COD_USUA));
-                    comando.Parameters.Add(new SqlParameter("@ALF_PASS", usuarioABuscar.ALF_PASS));
-                    using (SqlDataReader resultado = comando.ExecuteReader())
-                    {
-                        while (resultado.Read())
-                        {
-                            usuarioEncontrado = new SHMC_USUA()
-                            {
-                                COD_USUA = (string)resultado["COD_USUA"],
-                                ALF_PASS = (string)resultado["ALF_PASS"],
-                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                            };
-                        }
-                    }
-                }
-            }
-
-            return usuarioEncontrado;
-        }
-
         public List<SHMC_ATEN> Listar(int COD_TECN)
         {
             List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
@@ -79,7 +45,7 @@ namespace WcfServices.Persistencia
             string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
                         "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE COD_ESTA = 1 and COD_TECN = @COD_TECN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))

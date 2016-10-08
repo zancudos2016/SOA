@@ -18,10 +18,10 @@ namespace DPOSPrototipo
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            TecnicosWS.TecnicosClient proxy = new TecnicosWS.TecnicosClient();
+            UsuariosWS.UsuariosClient proxy = new UsuariosWS.UsuariosClient();
             try
             {
-                SHMC_USUA usuarioEncontrado = proxy.LoginTecnico(new SHMC_USUA()
+                SHMC_USUA usuarioEncontrado = proxy.LoginUsuario(new SHMC_USUA()
                 {
                     COD_USUA = Request.Form["username"],
                     ALF_PASS = Request.Form["password"]
@@ -31,7 +31,7 @@ namespace DPOSPrototipo
 
                 Response.Redirect("Principal.aspx");
             }
-            catch (FaultException<TecnicosWS.GeneralException> error )
+            catch (FaultException<UsuariosWS.GeneralException> error)
             {
                 lblMensaje.Text = error.Reason.ToString() + " - " + error.Detail.Codigo + " " + error.Detail.Descripcion;
             }

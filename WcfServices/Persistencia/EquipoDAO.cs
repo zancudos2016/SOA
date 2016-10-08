@@ -9,10 +9,6 @@ namespace WcfServices.Persistencia
 {
     public class EquipoDAO
     {
-        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=123456;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS";
-        //private string CadenaConexion = "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=.\\SQLEXPRESS2014";
-        private string CadenaConexion = "Persist Security Info=False;Integrated Security=true;Initial Catalog=BDATENCIONES;Server=localhost";
-
         public SHMC_EQUI Obtener(int COD_EQUI)
         {
             SHMC_EQUI equipoEncontrado = null;
@@ -21,7 +17,7 @@ namespace WcfServices.Persistencia
             "FROM SHMC_EQUI (NOLOCK) " +
             "WHERE COD_EQUI = @COD_EQUI";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -61,7 +57,7 @@ namespace WcfServices.Persistencia
                 "COD_PUNT_ATEN=@COD_PUNT_ATEN " +
                 "WHERE COD_EQUI=@COD_EQUI";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -91,7 +87,7 @@ namespace WcfServices.Persistencia
             "FROM SHMC_EQUI (NOLOCK) " +
             "WHERE COD_TECN = @COD_TECN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))

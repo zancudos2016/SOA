@@ -55,9 +55,14 @@ namespace WcfServices
             return eliminado;
         }
 
-        public List<SHMC_ATEN> Listar(string COD_TECN)
+        public List<SHMC_ATEN> Listar()
+        {
+            return atencionDAO.Listar();
+        }
+
+        public List<SHMC_ATEN> ListarPorTecnico(string COD_TECN)
         {
             return atencionDAO.Listar(Convert.ToInt32(COD_TECN));
         }
-    }
+}
 }

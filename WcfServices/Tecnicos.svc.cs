@@ -19,24 +19,6 @@ namespace WcfServices
             return tecnicoDAO.Listar();
         }
 
-        public SHMC_USUA LoginTecnico(SHMC_USUA usuarioABuscar)
-        {
-            SHMC_USUA usuarioEncontrado = tecnicoDAO.Login(usuarioABuscar);
-            if (usuarioEncontrado == null)
-            {
-                throw new FaultException<GeneralException>(
-                    new GeneralException()
-                    {
-                        Codigo = "1000",
-                        Descripcion = "Usuario no existe."
-                    },
-                    new FaultReason("Error al validar usuario."));
-            }
-
-            return usuarioEncontrado;
-        }
-
-
         public List<SHMC_ATEN> Listar(string COD_TECN)
         {
             return tecnicoDAO.Listar(Convert.ToInt32(COD_TECN));

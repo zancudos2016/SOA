@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DPOSPrototipo.TecnicosWS {
+namespace DPOSPrototipo.UsuariosWS {
     using System.Runtime.Serialization;
     using System;
     
@@ -75,64 +75,50 @@ namespace DPOSPrototipo.TecnicosWS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TecnicosWS.ITecnicos")]
-    public interface ITecnicos {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UsuariosWS.IUsuarios")]
+    public interface IUsuarios {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITecnicos/ListarTecnicos", ReplyAction="http://tempuri.org/ITecnicos/ListarTecnicosResponse")]
-        Entidades.SHMC_EMPL[] ListarTecnicos();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarios/LoginUsuario", ReplyAction="http://tempuri.org/IUsuarios/LoginUsuarioResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(DPOSPrototipo.UsuariosWS.GeneralException), Action="http://tempuri.org/IUsuarios/LoginUsuarioGeneralExceptionFault", Name="GeneralException", Namespace="http://schemas.datacontract.org/2004/07/WcfServices.Errores")]
+        Entidades.SHMC_USUA LoginUsuario(Entidades.SHMC_USUA usuarioABuscar);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITecnicos/ListarTecnicos", ReplyAction="http://tempuri.org/ITecnicos/ListarTecnicosResponse")]
-        System.Threading.Tasks.Task<Entidades.SHMC_EMPL[]> ListarTecnicosAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITecnicos/LoginTecnico", ReplyAction="http://tempuri.org/ITecnicos/LoginTecnicoResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(DPOSPrototipo.TecnicosWS.GeneralException), Action="http://tempuri.org/ITecnicos/LoginTecnicoGeneralExceptionFault", Name="GeneralException", Namespace="http://schemas.datacontract.org/2004/07/WcfServices.Errores")]
-        Entidades.SHMC_USUA LoginTecnico(Entidades.SHMC_USUA usuarioABuscar);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITecnicos/LoginTecnico", ReplyAction="http://tempuri.org/ITecnicos/LoginTecnicoResponse")]
-        System.Threading.Tasks.Task<Entidades.SHMC_USUA> LoginTecnicoAsync(Entidades.SHMC_USUA usuarioABuscar);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUsuarios/LoginUsuario", ReplyAction="http://tempuri.org/IUsuarios/LoginUsuarioResponse")]
+        System.Threading.Tasks.Task<Entidades.SHMC_USUA> LoginUsuarioAsync(Entidades.SHMC_USUA usuarioABuscar);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITecnicosChannel : DPOSPrototipo.TecnicosWS.ITecnicos, System.ServiceModel.IClientChannel {
+    public interface IUsuariosChannel : DPOSPrototipo.UsuariosWS.IUsuarios, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TecnicosClient : System.ServiceModel.ClientBase<DPOSPrototipo.TecnicosWS.ITecnicos>, DPOSPrototipo.TecnicosWS.ITecnicos {
+    public partial class UsuariosClient : System.ServiceModel.ClientBase<DPOSPrototipo.UsuariosWS.IUsuarios>, DPOSPrototipo.UsuariosWS.IUsuarios {
         
-        public TecnicosClient() {
+        public UsuariosClient() {
         }
         
-        public TecnicosClient(string endpointConfigurationName) : 
+        public UsuariosClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TecnicosClient(string endpointConfigurationName, string remoteAddress) : 
+        public UsuariosClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TecnicosClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UsuariosClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TecnicosClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public UsuariosClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public Entidades.SHMC_EMPL[] ListarTecnicos() {
-            return base.Channel.ListarTecnicos();
+        public Entidades.SHMC_USUA LoginUsuario(Entidades.SHMC_USUA usuarioABuscar) {
+            return base.Channel.LoginUsuario(usuarioABuscar);
         }
         
-        public System.Threading.Tasks.Task<Entidades.SHMC_EMPL[]> ListarTecnicosAsync() {
-            return base.Channel.ListarTecnicosAsync();
-        }
-        
-        public Entidades.SHMC_USUA LoginTecnico(Entidades.SHMC_USUA usuarioABuscar) {
-            return base.Channel.LoginTecnico(usuarioABuscar);
-        }
-        
-        public System.Threading.Tasks.Task<Entidades.SHMC_USUA> LoginTecnicoAsync(Entidades.SHMC_USUA usuarioABuscar) {
-            return base.Channel.LoginTecnicoAsync(usuarioABuscar);
+        public System.Threading.Tasks.Task<Entidades.SHMC_USUA> LoginUsuarioAsync(Entidades.SHMC_USUA usuarioABuscar) {
+            return base.Channel.LoginUsuarioAsync(usuarioABuscar);
         }
     }
 }
