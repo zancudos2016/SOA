@@ -14,14 +14,14 @@ namespace WcfServices
     {
         private TecnicoDAO tecnicoDAO = new TecnicoDAO();
 
+        public SHMC_EMPL ObtenerTecnico(int COD_TECN)
+        {
+            return tecnicoDAO.Obtener(COD_TECN);
+        }
+
         public List<SHMC_EMPL> ListarTecnicos()
         {
             return tecnicoDAO.Listar();
-        }
-
-        public List<SHMC_ATEN> Listar(string COD_TECN)
-        {
-            return tecnicoDAO.Listar(Convert.ToInt32(COD_TECN));
         }
     }
 }

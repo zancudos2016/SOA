@@ -7,44 +7,44 @@ using System.Web;
 
 namespace WcfServices.Persistencia
 {
-    public class TecnicoDAO
+    public class AlmacenDAO
     {
-        public SHMC_EMPL Obtener(int COD_TECN)
+        public SHMC_ALMA Obtener(int COD_ALMA)
         {
-            SHMC_EMPL tecnicoEncontrado = null;
-            string sql = "SELECT COD_TECN, ISNULL(ALF_EMPL,'') AS ALF_EMPL " +
-            "FROM SHMC_EMPL (NOLOCK) " +
-            "WHERE COD_TECN = @COD_TECN";
+            SHMC_ALMA almacenEncontrado = null;
+            string sql = "SELECT COD_ALMA, ISNULL(ALF_ALMA,'') AS ALF_ALMA " +
+            "FROM SHMC_ALMA (NOLOCK) " +
+            "WHERE COD_ALMA = @COD_ALMA";
 
             using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("@COD_TECN", COD_TECN));
+                    comando.Parameters.Add(new SqlParameter("@COD_ALMA", COD_ALMA));
                     using (SqlDataReader resultado = comando.ExecuteReader())
                     {
                         if (resultado.Read())
                         {
-                            tecnicoEncontrado = new SHMC_EMPL()
+                            almacenEncontrado = new SHMC_ALMA()
                             {
-                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                                ALF_EMPL = (string)resultado["ALF_EMPL"].ToString()
+                                COD_ALMA = Int32.Parse(resultado["COD_ALMA"].ToString()),
+                                ALF_ALMA = (string)resultado["ALF_ALMA"].ToString()
                             };
                         }
                     }
                 }
             }
 
-            return tecnicoEncontrado;
+            return almacenEncontrado;
         }
 
-        public List<SHMC_EMPL> Listar()
+        public List<SHMC_ALMA> Listar()
         {
-            List<SHMC_EMPL> tecnicosEncontrados = new List<SHMC_EMPL>();
-            SHMC_EMPL tecnicoEncontrado = null;
-            string sql = "SELECT COD_TECN, ISNULL(ALF_EMPL,'') AS ALF_EMPL " +
-            "FROM SHMC_EMPL (NOLOCK) ";
+            List<SHMC_ALMA> almacenesEncontrados = new List<SHMC_ALMA>();
+            SHMC_ALMA almacenEncontrado = null;
+            string sql = "SELECT COD_ALMA, ISNULL(ALF_ALMA,'') AS ALF_ALMA " +
+            "FROM SHMC_ALMA (NOLOCK) ";
 
             using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -55,18 +55,18 @@ namespace WcfServices.Persistencia
                     {
                         while (resultado.Read())
                         {
-                            tecnicoEncontrado = new SHMC_EMPL()
+                            almacenEncontrado = new SHMC_ALMA()
                             {
-                                COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
-                                ALF_EMPL = (string)resultado["ALF_EMPL"].ToString()
+                                COD_ALMA = Int32.Parse(resultado["COD_ALMA"].ToString()),
+                                ALF_ALMA = (string)resultado["ALF_ALMA"].ToString()
                             };
-                            tecnicosEncontrados.Add(tecnicoEncontrado);
+                            almacenesEncontrados.Add(almacenEncontrado);
                         }
                     }
                 }
             }
 
-            return tecnicosEncontrados;
+            return almacenesEncontrados;
         }
     }
 }

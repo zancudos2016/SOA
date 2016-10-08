@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
 using WcfServices.Errores;
 
 namespace WcfServices
 {
     [ServiceContract]
-    public interface ITecnicos
+    public interface IUsuarios
     {
+        [FaultContract(typeof(GeneralException))]
         [OperationContract]
-        SHMC_EMPL ObtenerTecnico(int COD_TECN);
-
-        [OperationContract]
-        List<SHMC_EMPL> ListarTecnicos();
+        SHMC_USUA LoginUsuario(SHMC_USUA usuarioABuscar);
     }
 }

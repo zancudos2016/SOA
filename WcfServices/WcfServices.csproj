@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,6 +93,7 @@
     <Compile Include="Persistencia\ConexionUtil.cs" />
     <Compile Include="Persistencia\EquipoDAO.cs" />
     <Compile Include="Persistencia\FacilidadDAO.cs" />
+    <Compile Include="Persistencia\ReporteDAO.cs" />
     <Compile Include="Persistencia\TecnicoDAO.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

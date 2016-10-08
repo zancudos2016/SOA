@@ -23,7 +23,7 @@ namespace WcfServices
             return equipoDAO.Modificar(equipoAModificar);
         }
 
-        public List<Entidades.SHMC_EQUI> ListarEquipos(int COD_TECN)
+        public List<SHMC_EQUI> ListarEquipos(int COD_TECN)
         {
             return equipoDAO.Listar(COD_TECN);
         }

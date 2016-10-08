@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
-using WcfServices.Errores;
 
 namespace WcfServices
 {
     [ServiceContract]
-    public interface ITecnicos
+    public interface IAlmacenes
     {
         [OperationContract]
-        SHMC_EMPL ObtenerTecnico(int COD_TECN);
+        SHMC_ALMA ObtenerAlmacen(int COD_ALMA);
 
         [OperationContract]
-        List<SHMC_EMPL> ListarTecnicos();
+        List<SHMC_ALMA> ListarAlmacenes();
     }
 }
