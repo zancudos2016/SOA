@@ -9,6 +9,28 @@ namespace WcfServices.Persistencia
 {
     public class FacilidadDAO
     {
+        public int RegistrarAtenFaci(SHMD_ATEN_REPO_FACI atenfaciARegistrar)
+        {
+            int reporteCreado = -1;
+            string sql = "INSERT INTO SHMD_ATEN_REPO_FACI (COD_ATEN,COD_FACI,IND_MARC) " +
+            "VALUES(@COD_ATEN,@COD_FACI,@IND_MARC)";
+
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@COD_ATEN", atenfaciARegistrar.COD_ATEN));
+                    comando.Parameters.Add(new SqlParameter("@COD_FACI", atenfaciARegistrar.COD_FACI));
+                    comando.Parameters.Add(new SqlParameter("@IND_MARC", atenfaciARegistrar.IND_MARC));
+
+                    reporteCreado = comando.ExecuteNonQuery();
+                }
+            }
+
+            return reporteCreado;
+        }
+
         public List<SHMC_FACI> Listar()
         {
             List<SHMC_FACI> facilidadesEncontradas = new List<SHMC_FACI>();

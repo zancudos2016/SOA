@@ -13,6 +13,11 @@ namespace WcfServices
     {
         private FacilidadDAO facilidadDAO = new FacilidadDAO();
 
+        public int RegistrarAtencionFacilidad(SHMD_ATEN_REPO_FACI atenfaciARegistrar)
+        {
+            return facilidadDAO.RegistrarAtenFaci(atenfaciARegistrar);
+        }
+
         public List<SHMC_FACI> ListarFacilidades()
         {
             return facilidadDAO.Listar();

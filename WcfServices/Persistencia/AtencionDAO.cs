@@ -100,7 +100,7 @@ namespace WcfServices.Persistencia
 
             string sql = "UPDATE SHMC_ATEN SET FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA WHERE COD_ATEN=@COD_ATEN";
 
-            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
