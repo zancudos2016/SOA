@@ -38,6 +38,7 @@ namespace Entidades
         public string ALF_PTOA { get; set; }
         [DataMember]
         public List<SHMC_ATEN> LST_ATEN { get; set; }
+        [DataMember]
         public bool IND_ERRO { get; set; }
         [DataMember]
         public string ALF_ERRO { get; set; }

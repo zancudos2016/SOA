@@ -41,7 +41,14 @@ namespace WcfServices
             {
                 throw new WebFaultException<string>("La atención no existe", HttpStatusCode.NotAcceptable);
             }
-            return atencionDAO.Modificar(atencionAModificar);
+            if (string.IsNullOrEmpty(atencionAModificar.FEC_PROG))
+            {
+                return atencionDAO.Modificar(atencionAModificar);
+            }
+            else
+            {
+                return atencionDAO.Programar(atencionAModificar);
+            }
         }
 
         public int Eliminar(string COD_ATEN)
