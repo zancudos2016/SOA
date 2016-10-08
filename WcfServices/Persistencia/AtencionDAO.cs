@@ -74,7 +74,8 @@ namespace WcfServices.Persistencia
         public SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar)
         {
             SHMC_ATEN atencionModificada = null;
-            string sql = "UPDATE SHMC_ATEN SET COD_TIPO=@COD_TIPO, FEC_ATEN=@FEC_ATEN, ALF_COME=@ALF_COME, FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA, ALF_PTOA=@ALF_PTOA WHERE COD_ATEN=@COD_ATEN";
+
+            string sql = "UPDATE SHMC_ATEN SET COD_TIPO=@COD_TIPO, FEC_ATEN=@FEC_ATEN, ALF_COME=@ALF_COME, COD_ESTA=@COD_ESTA, ALF_PTOA=@ALF_PTOA WHERE COD_ATEN=@COD_ATEN";
 
             using (SqlConnection conexion = new SqlConnection(CadenaConexion))
             {
@@ -82,13 +83,11 @@ namespace WcfServices.Persistencia
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("@COD_ATEN", atencionAModificar.COD_ATEN));
-                    comando.Parameters.Add(new SqlParameter("@COD_TIPO", atencionAModificar.COD_TIPO));
-                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", atencionAModificar.FEC_ATEN));
-                    comando.Parameters.Add(new SqlParameter("@ALF_COME", atencionAModificar.ALF_COME));
-                    comando.Parameters.Add(new SqlParameter("@FEC_PROG", atencionAModificar.FEC_PROG));
-                    comando.Parameters.Add(new SqlParameter("@COD_TECN", atencionAModificar.COD_TECN));
-                    comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionAModificar.COD_ESTA));
                     comando.Parameters.Add(new SqlParameter("@ALF_PTOA", atencionAModificar.ALF_PTOA));
+                    comando.Parameters.Add(new SqlParameter("@COD_TIPO", atencionAModificar.COD_TIPO));
+                    comando.Parameters.Add(new SqlParameter("@FEC_ATEN", DateTime.Parse(atencionAModificar.FEC_ATEN.Replace('/', '-'))));
+                    comando.Parameters.Add(new SqlParameter("@ALF_COME", atencionAModificar.ALF_COME));
+                    comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionAModificar.COD_ESTA));
 
                     comando.ExecuteNonQuery();
                 }
@@ -97,7 +96,29 @@ namespace WcfServices.Persistencia
             atencionModificada = Obtener(atencionAModificar.COD_ATEN);
             return atencionModificada;
         }
+        public SHMC_ATEN Programar(SHMC_ATEN atencionAProgramar)
+        {
+            SHMC_ATEN atencionProgramada = null;
 
+            string sql = "UPDATE SHMC_ATEN SET FEC_PROG=@FEC_PROG, COD_TECN=@COD_TECN, COD_ESTA=@COD_ESTA WHERE COD_ATEN=@COD_ATEN";
+
+            using (SqlConnection conexion = new SqlConnection(CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@COD_ATEN", atencionAProgramar.COD_ATEN));
+                    comando.Parameters.Add(new SqlParameter("@FEC_PROG", DateTime.Parse(atencionAProgramar.FEC_PROG.Replace('/', '-'))));
+                    comando.Parameters.Add(new SqlParameter("@COD_TECN", atencionAProgramar.COD_TECN));
+                    comando.Parameters.Add(new SqlParameter("@COD_ESTA", atencionAProgramar.COD_ESTA));
+
+                    comando.ExecuteNonQuery();
+                }
+            }
+
+            atencionProgramada = Obtener(atencionAProgramar.COD_ATEN);
+            return atencionProgramada;
+        }
         public int Eliminar(int COD_ATEN)
         {
             string sql = "DELETE FROM SHMC_ATEN WHERE COD_ATEN = @COD_ATEN";
