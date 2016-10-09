@@ -16,21 +16,47 @@
         .PanelModal{border-color: rgb(255,51,51);}
         #lblMenu ul ul a:hover {background-color: rgba(51,153,255, 0.5);}
     </style>
+    <script>
+        setTimeout(function () {
+            var lblTiempo = document.getElementById('lblTiempo');
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+
+            today = mm + '/' + dd + '/' + yyyy;
+            lblTiempo.innerHTML = today;
+        }, 500)
+    </script>
 </head>
 <body>
+    <form runat="server">
     <div>
         <table style="width:310px;">
-            <tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>
+            <%--<tr><td class="Primario tituloWF" colspan="2">DETALLES</td></tr>--%>
             <tr>
                 <td>
 		            <table class="dGrid" cellspacing="1" cellpadding="0" border="0" id="gvDetalles" style="color:#333333;width:310px;">
 			            <tr>
-				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Facilidades - MAR 2013-04-13 - 16:00</td>
+				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Facilidades - <label id="lblTiempo"></label></td>
 			            </tr>
                         <tr>
-				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención C-097600021</td>
+				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención : <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
 			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
+                        <tr>
+                            <td>
+                                <asp:CheckBoxList runat="server" ID="chklFacilidades"></asp:CheckBoxList>
+                            </td>
+                        </tr>
+                        <%--<tr style="border-bottom: 1px solid black;">
 				            <td>Zona Accesible</td>
                             <td style="color:#ff9999;"></td>
 			            </tr>
@@ -53,9 +79,9 @@
                         <tr style="border-bottom: 1px solid black;">
 				            <td>Equipo Ubicable</td>
                             <td style="color:#ff9999;"></td>
-			            </tr>
+			            </tr>--%>
                         <tr>
-				            <td style="text-align:left;"><span id="btnSiguiente" class="button">Confirmar TODO</span></td>
+				            <%--<td style="text-align:left;"><span id="btnSiguiente" class="button">Confirmar TODO</span></td>--%>
                             <td style="text-align:right;"><a href="Orden.aspx"><span id="btnSiguiente" class="button">Siguiente</span></a></td>
 			            </tr>
 		            </table>
@@ -63,5 +89,6 @@
             </tr>
         </table>
     </div>
+    </form>
 </body>
 </html>

@@ -59,7 +59,9 @@ namespace WcfServices.Persistencia
                                 FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
                                 COD_TECN = Convert.ToInt32(resultado["COD_TECN"].ToString()),
                                 COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
-                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"])
+                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"]),
+                                TIPO = fnTIPO(Int32.Parse(resultado["COD_TIPO"].ToString())),
+                                ESTADO = fnESTADO(Int32.Parse(resultado["COD_ESTA"].ToString()))
                             };
                         }
                     }
@@ -68,6 +70,7 @@ namespace WcfServices.Persistencia
 
             return atencionEncontrada;
         }
+
         public SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar)
         {
             SHMC_ATEN atencionModificada = null;
@@ -138,16 +141,17 @@ namespace WcfServices.Persistencia
             List<SHMC_ATEN> atencionesEncontradas = new List<SHMC_ATEN>();
             SHMC_ATEN atencionEncontrada = null;
             string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN," +
-                            "ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
-                            "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA " +
-                            "FROM SHMC_ATEN (NOLOCK) " +
-                            "WHERE COD_ESTA = 1 OR CONVERT(CHAR(8),FEC_ATEN,112)=CONVERT(CHAR(8),GETDATE(),112)";
+            "ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
+            "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA " +
+            "FROM SHMC_ATEN (NOLOCK) " +
+            "WHERE COD_ESTA = 1";
 
             using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
+                    //comando.Parameters.Add(new SqlParameter("@COD_TECN", COD_TECN));
                     using (SqlDataReader resultado = comando.ExecuteReader())
                     {
                         while (resultado.Read())
@@ -158,7 +162,7 @@ namespace WcfServices.Persistencia
                                 COD_TIPO = Int32.Parse(resultado["COD_TIPO"].ToString()),
                                 FEC_ATEN = resultado["FEC_ATEN"].ToString(),
                                 ALF_COME = (string)resultado["ALF_COME"],
-                                FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
+                                FEC_PROG = resultado["FEC_PROG"].ToString(),
                                 COD_TECN = Int32.Parse(resultado["COD_TECN"].ToString()),
                                 COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
                                 ALF_PTOA = resultado["ALF_PTOA"].ToString(),

@@ -12,6 +12,9 @@ namespace WcfServices
     public interface IFacilidades
     {
         [OperationContract]
+        int RegistrarAtencionFacilidad(SHMD_ATEN_REPO_FACI atenfaciARegistrar);
+
+        [OperationContract]
         List<SHMC_FACI> ListarFacilidades();
     }
 }

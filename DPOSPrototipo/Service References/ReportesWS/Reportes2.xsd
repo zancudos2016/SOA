@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Entidades" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Entidades" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SHMD_ATEN_REPO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ALF_COME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LATI_LLEG" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LATI_PART" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LATI_REPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LONG_LLEG" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LONG_PART" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ALF_LONG_REPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="COD_ATEN" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_ATEN_REPO" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_EQUI_LLEG" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_EQUI_SALE" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_ESTA_ATEN" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_ESTA_EQUI_SALE" type="xs:int" />
+      <xs:element minOccurs="0" name="COD_SEST" type="xs:int" />
+      <xs:element minOccurs="0" name="FEC_LLEG" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FEC_PART" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FEC_REPO" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IMG_FOTO_LLEG" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IMG_FOTO_REPO" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SHMD_ATEN_REPO" nillable="true" type="tns:SHMD_ATEN_REPO" />
+</xs:schema>
