@@ -226,16 +226,13 @@ namespace WcfServices.Persistencia
             switch (COD_TIPO)
             {
                 case 1:
-                    tipo = "ALTA";
+                    tipo = "INSTALACION";
                     break;
                 case 2:
-                    tipo = "BAJA";
+                    tipo = "DESINSTALACION";
                     break;
                 case 3:
-                    tipo = "CAMBIO";
-                    break;
-                case 4:
-                    tipo = "ENTRENAMIENTO";
+                    tipo = "INCIDENCIA";
                     break;
                 default:
                     tipo = "OTRO";
@@ -250,16 +247,16 @@ namespace WcfServices.Persistencia
             switch (COD_ESTA)
             {
                 case 1:
-                    estado = "EXITO";
+                    estado = "REGISTRADA";
                     break;
                 case 2:
-                    estado = "INFRAC";
+                    estado = "PROGRAMADA";
                     break;
                 case 3:
-                    estado = "ANULD";
+                    estado = "CERRADA";
                     break;
                 case 4:
-                    estado = "CANCL";
+                    estado = "CANCELADA";
                     break;
                 default:
                     estado = "";

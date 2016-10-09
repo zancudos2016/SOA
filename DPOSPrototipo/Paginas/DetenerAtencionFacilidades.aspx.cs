@@ -25,8 +25,8 @@ namespace DPOSPrototipo.Paginas
                 List<SHMC_FACI> facilidadesEncontradas = proxy.ListarFacilidades();
 
                 chklFacilidades.DataSource = facilidadesEncontradas;
-                chklFacilidades.DataMember = "COD_FACI";
-                chklFacilidades.DataMember = "ALF_FACI";
+                chklFacilidades.DataValueField = "COD_FACI";
+                chklFacilidades.DataTextField = "ALF_FACI";
                 chklFacilidades.DataBind();
             }
         }
