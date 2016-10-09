@@ -68,42 +68,6 @@ namespace WcfServices.Persistencia
 
             return atencionEncontrada;
         }
-
-        public SHMC_ATEN Obtener(string Comercio)
-        {
-            SHMC_ATEN atencionEncontrada = null;
-            string sql = "SELECT COD_ATEN,COD_TIPO,CONVERT(NVARCHAR(10),FEC_ATEN,103) AS FEC_ATEN,ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
-                        "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA FROM SHMC_ATEN WHERE ALF_PTOA=@ALF_PTOA";
-
-            using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
-            {
-                conexion.Open();
-                using (SqlCommand comando = new SqlCommand(sql, conexion))
-                {
-                    comando.Parameters.Add(new SqlParameter("@ALF_PTOA", Comercio));
-                    using (SqlDataReader resultado = comando.ExecuteReader())
-                    {
-                        if (resultado.Read())
-                        {
-                            atencionEncontrada = new SHMC_ATEN()
-                            {
-                                COD_ATEN = Convert.ToInt32(resultado["COD_ATEN"]),
-                                COD_TIPO = Convert.ToInt32(resultado["COD_TIPO"]),
-                                FEC_ATEN = resultado["FEC_ATEN"].ToString(),
-                                ALF_COME = Convert.ToString(resultado["ALF_COME"]),
-                                FEC_PROG = Convert.ToString(resultado["FEC_PROG"]),
-                                COD_TECN = Convert.ToInt32(resultado["COD_TECN"].ToString()),
-                                COD_ESTA = Int32.Parse(resultado["COD_ESTA"].ToString()),
-                                ALF_PTOA = Convert.ToString(resultado["COD_ESTA"])
-                            };
-                        }
-                    }
-                }
-            }
-
-            return atencionEncontrada;
-        }
-
         public SHMC_ATEN Modificar(SHMC_ATEN atencionAModificar)
         {
             SHMC_ATEN atencionModificada = null;
