@@ -9,7 +9,6 @@ using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
-using WcfServices;
 
 namespace WebApp.Controllers
 {
@@ -143,6 +142,18 @@ namespace WebApp.Controllers
                 oBe.ALF_ERRO = ex.Message;
                 return oBe;
             }
+        }
+        [HttpPost]
+        [Route("WA0004_ATEN")]
+        public List<SHMC_EMPL> Set_ATEN_TECN(SHMC_ATEN oBe)
+        {
+            if (HttpContext.Current.Session["COD_USUA"] == null)
+                return new List<SHMC_EMPL>();
+
+            ServiceTecnicos.TecnicosClient proxy = new ServiceTecnicos.TecnicosClient();
+            List<SHMC_EMPL> oList = proxy.ListarTecnicos().ToList<SHMC_EMPL>();
+
+            return oList;
         }
     }
 }
