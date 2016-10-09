@@ -144,7 +144,7 @@ namespace WcfServices.Persistencia
             "ISNULL(ALF_COME,'') AS ALF_COME,ISNULL(CONVERT(NVARCHAR(10),FEC_PROG,103),'') AS FEC_PROG," +
             "ISNULL(COD_TECN,0) AS COD_TECN, COD_ESTA, ALF_PTOA " +
             "FROM SHMC_ATEN (NOLOCK) " +
-            "WHERE COD_ESTA = 1";
+            "WHERE COD_ESTA = 1 OR CONVERT(CHAR(8),FEC_ATEN,112)=CONVERT(CHAR(8),GETDATE(),112)";
 
             using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
