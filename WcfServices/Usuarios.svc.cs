@@ -17,8 +17,10 @@ namespace WcfServices
         public SHMC_USUA LoginUsuario(SHMC_USUA usuarioABuscar)
         {
             SHMC_USUA usuarioEncontrado = usuarioDAO.Login(usuarioABuscar);
-            if (usuarioEncontrado == null)
+            
+            if (usuarioEncontrado == null)            
             {
+                
                 throw new FaultException<GeneralException>(
                     new GeneralException()
                     {
