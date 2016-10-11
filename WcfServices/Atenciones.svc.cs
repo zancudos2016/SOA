@@ -12,6 +12,7 @@ using WcfServices.Persistencia;
 
 namespace WcfServices
 {
+    //este servicio contiene REST
     public class Atenciones : IAtenciones
     {
         private AtencionDAO atencionDAO = new AtencionDAO();
@@ -44,6 +45,7 @@ namespace WcfServices
             {
                 throw new WebFaultException<string>("La atención no existe", HttpStatusCode.NotAcceptable);
             }
+
             return atencion;
         }
 
@@ -60,6 +62,7 @@ namespace WcfServices
             }
             else
             {
+
                 return atencionDAO.Programar(atencionAModificar);
             }
         }
@@ -71,16 +74,19 @@ namespace WcfServices
             {
                 throw new WebFaultException<string>("La atención no existe", HttpStatusCode.NotAcceptable);
             }
+
             return eliminado;
         }
 
         public List<SHMC_ATEN> Listar()
         {
+
             return atencionDAO.Listar();
         }
 
         public List<SHMC_ATEN> ListarPorTecnico(string COD_TECN)
         {
+
             return atencionDAO.Listar(Convert.ToInt32(COD_TECN));
         }
 }
