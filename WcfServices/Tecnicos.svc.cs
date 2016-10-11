@@ -12,15 +12,18 @@ namespace WcfServices
 {
     public class Tecnicos : ITecnicos
     {
+        // este servicio contiene los metodos obtener y listar
         private TecnicoDAO tecnicoDAO = new TecnicoDAO();
 
         public SHMC_EMPL ObtenerTecnico(int COD_TECN)
         {
+
             return tecnicoDAO.Obtener(COD_TECN);
         }
 
         public List<SHMC_EMPL> ListarTecnicos()
         {
+
             return tecnicoDAO.Listar();
         }
     }
