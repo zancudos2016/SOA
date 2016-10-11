@@ -11,25 +11,30 @@ namespace WcfServices
 {
     public class Reportes : IReportes
     {
+        // este servicio contiene los metodos registrar, regularizar, obtener y modificar
         private ReporteDAO reporteDAO = new ReporteDAO();
 
         public int RegistarReporte(SHMD_ATEN_REPO reporteARegistrar)
         {
+
             return reporteDAO.Registrar(reporteARegistrar);
         }
 
         public bool RegularizarReportes()
         {
+
             return reporteDAO.RegularizarReportes();
         }
 
         public SHMD_ATEN_REPO ObtenerReporte(int COD_ATEN_REPO)
         {
+
             return reporteDAO.Obtener(COD_ATEN_REPO);
         }
 
         public SHMD_ATEN_REPO ModificarReporte(SHMD_ATEN_REPO reporteAModificar)
         {
+
             return reporteDAO.Modificar(reporteAModificar);
         }
     }
