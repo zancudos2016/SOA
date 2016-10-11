@@ -10,6 +10,7 @@ using WcfServices.Persistencia;
 
 namespace WcfServices
 {
+    //este servicio contiene el metodo de login
     public class Usuarios : IUsuarios
     {
         private UsuarioDAO usuarioDAO = new UsuarioDAO();
