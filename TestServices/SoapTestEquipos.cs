@@ -21,6 +21,7 @@ namespace TestServices
             Assert.AreEqual(1, obtenerEquipo.COD_TECN);
             Assert.AreEqual(1, obtenerEquipo.COD_PUNT_ATEN);
         }
+
         [TestMethod]
         public void TestModificarEquipoOK()
         {
@@ -43,6 +44,7 @@ namespace TestServices
             Assert.AreEqual(1, equipoAModificar.COD_TECN);
             Assert.AreEqual(1, equipoAModificar.COD_PUNT_ATEN);
         }
+
         [TestMethod]
         public void TestListarEquiposOK()
         {
