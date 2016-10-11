@@ -11,15 +11,18 @@ namespace WcfServices
 {
     public class Almacenes : IAlmacenes
     {
+        // el servicio almacenes contiene los metodos obtener y listar
         private AlmacenDAO almacenDAO = new AlmacenDAO();
 
         public SHMC_ALMA ObtenerAlmacen(int COD_ALMA)
         {
+
             return almacenDAO.Obtener(COD_ALMA);
         }
 
         public List<SHMC_ALMA> ListarAlmacenes()
         {
+
             return almacenDAO.Listar();
         }
     }
