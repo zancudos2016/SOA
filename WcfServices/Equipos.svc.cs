@@ -9,22 +9,26 @@ using WcfServices.Persistencia;
 
 namespace WcfServices
 {
+    // el servicio Equipos tiene los metodos obtener, modificar y listar
     public class Equipos : IEquipos
     {
         private EquipoDAO equipoDAO = new EquipoDAO();
 
         public SHMC_EQUI ObtenerEquipo(int COD_EQUI)
         {
+
             return equipoDAO.Obtener(COD_EQUI);
         }
 
         public SHMC_EQUI ModificarEquipo(SHMC_EQUI equipoAModificar)
         {
+
             return equipoDAO.Modificar(equipoAModificar);
         }
 
         public List<SHMC_EQUI> ListarEquipos(int COD_TECN)
         {
+
             return equipoDAO.Listar(COD_TECN);
         }
     }
