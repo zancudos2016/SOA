@@ -11,8 +11,10 @@ namespace WcfServices.Persistencia
         {
             get
             {
+                //"Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=localhost";
                 //"Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=IMANDEV01";
-                return "Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=192.168.1.6";
+                //"Persist Security Info=False;User ID=sa;Password=1234;Initial Catalog=BDATENCIONES;Server=192.168.1.6";
+                return "Persist Security Info=False;User ID=sa;Password=sqlserver2014;Initial Catalog=BDATENCIONES;Server=localhost\\SQLEXPRESS2014";
             }
         }
     }

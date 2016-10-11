@@ -81,6 +81,11 @@ namespace WcfServices
 
         public List<SHMC_ATEN> ListarPorTecnico(string COD_TECN)
         {
+            //Regulariza los reportes que se quedan encolados
+            Reportes reportes = new Reportes();
+            reportes.RegularizarReportes();
+            //Regulariza los reportes que se quedan encolados
+
             return atencionDAO.Listar(Convert.ToInt32(COD_TECN));
         }
 }

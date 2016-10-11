@@ -23,16 +23,15 @@
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
+            var ho = today.getHours();
+            var mi = today.getMinutes();
 
-            if (dd < 10) {
-                dd = '0' + dd
-            }
+            if (dd < 10) { dd = '0' + dd; }
+            if (mm < 10) { mm = '0' + mm; }
+            if (ho < 10) { ho = '0' + ho; }
+            if (mi < 10) { mi = '0' + mi; }
 
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = mm + '/' + dd + '/' + yyyy;
+            today = mm + '/' + dd + '/' + yyyy + ' ' + ho + ':' + mi;
             lblTiempo.innerHTML = today;
         }, 500)
 

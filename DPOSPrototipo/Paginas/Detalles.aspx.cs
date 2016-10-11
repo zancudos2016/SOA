@@ -45,5 +45,10 @@ namespace DPOSPrototipo.Paginas
                 }
             }
         }
+
+        protected void btnOpcion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Opcion.aspx");
+        }
     }
 }

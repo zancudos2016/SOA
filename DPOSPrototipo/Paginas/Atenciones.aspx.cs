@@ -22,6 +22,7 @@ namespace DPOSPrototipo.Paginas
 
             if (usuarioEncontrado != null)
             {
+                //Consulta de Atenciones programadas, asignadas al técnico - REST
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:25097/Atenciones.svc/Atenciones?COD_TECN=" + usuarioEncontrado.COD_TECN);
                 req.Method = "GET";
                 HttpWebResponse res = (HttpWebResponse)req.GetResponse();

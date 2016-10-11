@@ -21,14 +21,39 @@ namespace DPOSPrototipo.Paginas
                     lblAtencion.Text = atencionObtenida.COD_ATEN.ToString();
                 }
 
+                //Consulta de facilidades disponibles - SOA
                 FacilidadesWS.FacilidadesClient proxy = new FacilidadesWS.FacilidadesClient();
                 List<SHMC_FACI> facilidadesEncontradas = proxy.ListarFacilidades();
 
-                chklFacilidades.DataSource = facilidadesEncontradas;
-                chklFacilidades.DataValueField = "COD_FACI";
-                chklFacilidades.DataTextField = "ALF_FACI";
-                chklFacilidades.DataBind();
+                Session["facilidadesEncontradas"] = facilidadesEncontradas;
+                if (facilidadesEncontradas != null)
+                { 
+                    chklFacilidades.DataSource = facilidadesEncontradas;
+                    chklFacilidades.DataValueField = "COD_FACI";
+                    chklFacilidades.DataTextField = "ALF_FACI";
+                    chklFacilidades.DataBind();
+                }
             }
+        }
+
+        protected void btnConfirmarTODO_Click(object sender, EventArgs e)
+        {
+            CheckUncheckAll(true);
+        }
+
+        void CheckUncheckAll(bool tf)
+        {
+            foreach (ListItem item in chklFacilidades.Items)
+            {
+                item.Selected = tf;
+            }
+        }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            CheckUncheckAll(true);
+            Session["chklFacilidades"] = chklFacilidades;
+            Response.Redirect("Orden.aspx");
         }
     }
 }

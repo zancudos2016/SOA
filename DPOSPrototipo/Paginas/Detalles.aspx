@@ -23,16 +23,15 @@
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
+            var ho = today.getHours();
+            var mi = today.getMinutes();
 
-            if (dd < 10) {
-                dd = '0' + dd
-            }
+            if (dd < 10) { dd = '0' + dd; }
+            if (mm < 10) { mm = '0' + mm; }
+            if (ho < 10) { ho = '0' + ho; }
+            if (mi < 10) { mi = '0' + mi; }
 
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = mm + '/' + dd + '/' + yyyy;
+            today = mm + '/' + dd + '/' + yyyy + ' ' + ho + ':' + mi;
             lblTiempo.innerHTML = today;
         }, 500)
     </script>
@@ -52,7 +51,7 @@
 				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención : <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
 			            </tr>
                         <tr>
-				            <td style="text-align:left;"><a href="Opcion.aspx"><span id="btnOpción" class="button" style="width:100px;">Continuar</span></a></td>
+				            <td style="text-align:left;"><asp:Button runat="server" ID="btnOpcion" CssClass="button" style="width:100px;" Text="Continuar" OnClick="btnOpcion_Click" /></td>
                             <%--<td style="text-align:right;"><a href="DetenerAtencionMotivo.aspx"><span id="btnDetener" class="button" style="width:100px;">Detener Atención</span></a></td>--%>
 			            </tr>
                         <tr>
@@ -88,69 +87,6 @@
                         <tr>
 				            <td colspan="2"></td>
 			            </tr>
-                        <%--<tr style="border-bottom: 1px solid black;">
-				            <td>Dirección</td>
-                            <td style="color:#ff9999;">AV. LOS ALAMOS VERDES</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Referencia</td>
-                            <td style="color:#ff9999;">Esquina pared verde</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Contacto</td>
-                            <td style="color:#ff9999;">Juan Del Carpio</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Teléfono</td>
-                            <td style="color:#ff9999;">999999999</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Distrito</td>
-                            <td style="color:#ff9999;">Cerro Dorado</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Prov/Dpto</td>
-                            <td style="color:#ff9999;">Arequipa/Arequipa</td>
-			            </tr>
-                        <tr>
-				            <td colspan="2" style="background: #ff9999;color:white;">Otros</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>RUC</td>
-                            <td style="color:#ff9999;">20154856952</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Razón Social</td>
-                            <td style="color:#ff9999;">RVC xxxxxx</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Dirección <br />Registrada</td>
-                            <td style="color:#ff9999;">AV. LOS ALAMOS VERDES</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Otros Datos</td>
-                            <td style="color:#ff9999;">
-                                054-555555<br />
-                                959595959<br />
-                                Pepe Cortizona<br />
-                                Juan Alamo<br />
-                            </td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>e-mail</td>
-                            <td style="color:#ff9999;">Hola@yahoo.com</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Problema <br />Reportado</td>
-                            <td style="color:#ff9999;">Hola@yahoo.com</td>
-			            </tr>
-                        <tr style="border-bottom: 1px solid black;">
-				            <td>Comentarios</td>
-                            <td style="color:#ff9999;">Que se apuren que se va de viaje</td>
-			            </tr>
-                        <tr>
-				            <td colspan="2"></td>
-			            </tr>--%>
 		            </table>
                 </td>
             </tr>

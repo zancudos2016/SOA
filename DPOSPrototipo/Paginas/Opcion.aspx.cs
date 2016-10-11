@@ -22,5 +22,11 @@ namespace DPOSPrototipo.Paginas
                 }
             }
         }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            Session["txtHoraEvento"] = txtHoraEvento.Text;
+            Response.Redirect("DetenerAtencionFacilidades.aspx");
+        }
     }
 }

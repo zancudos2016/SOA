@@ -28,8 +28,9 @@ namespace WcfServices.Persistencia
         private int Crear(SHMD_ATEN_REPO reporteACrear)
         {
             int reporteCreado = -1;
-            string sql = "INSERT INTO SHMC_ATEN (COD_ATEN,ALF_COME) " +
+            string sql = "INSERT INTO SHMD_ATEN_REPO (COD_ATEN,ALF_COME) " +
             "VALUES(@COD_ATEN,@ALF_COME)";
+            
 
             using (SqlConnection conexion = new SqlConnection(ConexionUtil.Cadena))
             {
@@ -38,6 +39,14 @@ namespace WcfServices.Persistencia
                 {
                     comando.Parameters.Add(new SqlParameter("@COD_ATEN", reporteACrear.COD_ATEN));
                     comando.Parameters.Add(new SqlParameter("@ALF_COME", reporteACrear.ALF_COME));
+
+                    reporteCreado = comando.ExecuteNonQuery();
+                }
+
+                sql = "UPDATE SHMC_ATEN SET COD_ESTA=3 WHERE COD_ATEN=@COD_ATEN";
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@COD_ATEN", reporteACrear.COD_ATEN));
 
                     reporteCreado = comando.ExecuteNonQuery();
                 }

@@ -18,13 +18,23 @@
     </style>
     <script>
         setTimeout(function () {
-            var txtHoraEvento = document.getElementById('txtHoraEvento');
+            var lblTiempo = document.getElementById('lblTiempo');
+            var txtHoraEvento = document.getElementById('<%= txtHoraEvento.ClientID%>');
             var today = new Date();
-            var hh = today.getHours();
-            var mm = today.getMinutes();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+            var ho = today.getHours();
+            var mi = today.getMinutes();
 
-            today = hh + ':' + mm;
-            txtHoraEvento.value = today;
+            if (dd < 10) { dd = '0' + dd; }
+            if (mm < 10) { mm = '0' + mm; }
+            if (ho < 10) { ho = '0' + ho; }
+            if (mi < 10) { mi = '0' + mi; }
+
+            today = mm + '/' + dd + '/' + yyyy + ' ' + ho + ':' + mi;
+            lblTiempo.innerHTML = today;
+            txtHoraEvento.value = ho + ':' + mi;
         }, 500)
     </script>
 </head>
@@ -37,7 +47,7 @@
                 <td>
 		            <table class="dGrid" cellspacing="1" cellpadding="0" border="0" id="gvDetalles" style="color:#333333;width:310px;">
 			            <tr>
-				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Opción - 16:32</td>
+				            <td colspan="2" style="border:2px solid black;background:rgb(255,51,51);text-align:center;color:white;">Opción - <label id="lblTiempo"></label></td>
 			            </tr>
                         <tr>
 				            <td colspan="2" style="border:2px solid black;text-align:center;">Atención : <asp:Label ID="lblAtencion" runat="server"></asp:Label></td>
@@ -46,10 +56,10 @@
 				            <td style="text-align:left;">Estas seguro?</td>
                         </tr>
                         <tr>
-				            <td style="text-align:left;">Hora de este evento : <input id="txtHoraEvento" type="text" value="" style="width:50px;" /></td>
+				            <td style="text-align:left;">Hora de este evento : <asp:TextBox runat="server" ID="txtHoraEvento" Width="50px"></asp:TextBox></td>
                         </tr>
                         <tr>
-                            <td style="text-align:right;"><a href="DetenerAtencionFacilidades.aspx"><span id="btnSiguiente" class="button">Continuar</span></a></td>
+                            <td style="text-align:right;"><asp:Button runat="server" ID="btnSiguiente" CssClass="button" style="width:100px;" Text="Continuar" OnClick="btnSiguiente_Click" /></td>
 			            </tr>
 		            </table>
                 </td>

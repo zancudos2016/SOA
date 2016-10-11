@@ -21,6 +21,7 @@ namespace DPOSPrototipo
             UsuariosWS.UsuariosClient proxy = new UsuariosWS.UsuariosClient();
             try
             {
+                //Validación de usuario - SOA
                 SHMC_USUA usuarioEncontrado = proxy.LoginUsuario(new SHMC_USUA()
                 {
                     COD_USUA = Request.Form["username"],
@@ -28,11 +29,11 @@ namespace DPOSPrototipo
                 });
 
                 Session["usuarioEncontrado"] = usuarioEncontrado;
-
                 Response.Redirect("Principal.aspx");
             }
             catch (FaultException<UsuariosWS.GeneralException> error)
             {
+                //Se captura la excepcion, en caso el usuario no exista
                 lblMensaje.Text = error.Reason.ToString() + " - " + error.Detail.Codigo + " " + error.Detail.Descripcion;
             }
         }

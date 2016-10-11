@@ -23,16 +23,15 @@
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
+            var ho = today.getHours();
+            var mi = today.getMinutes();
 
-            if (dd < 10) {
-                dd = '0' + dd
-            }
+            if (dd < 10) { dd = '0' + dd; }
+            if (mm < 10) { mm = '0' + mm; }
+            if (ho < 10) { ho = '0' + ho; }
+            if (mi < 10) { mi = '0' + mi; }
 
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-
-            today = mm + '/' + dd + '/' + yyyy;
+            today = mm + '/' + dd + '/' + yyyy + ' ' + ho + ':' + mi;
             lblTiempo.innerHTML = today;
         }, 500)
     </script>
@@ -58,39 +57,6 @@
                     </asp:GridView>
                 </td>
             </tr>
-            <%--<tr>
-                <td>
-		            <table class="mGrid" cellspacing="1" cellpadding="0" border="0" style="color:#333333;width:310px;">
-			            <tr>
-				            <th scope="col">Hora</th><th scope="col">Tipo</th><th scope="col">Dir</th><th scope="col">Estado</th>
-			            </tr>
-                        <tr>
-				            <td class="centrado">09:00</td>
-                            <td class="centrado">A</td>
-                            <td class="centrado">DDD04040</td>
-                            <td class="centrado">INFRC <input type="image" src="../_Images/mail.png" style="width:16px;border-width:0px;" /></td>
-			            </tr>
-                        <tr class="alt">
-				            <td class="centrado">11:30</td>
-                            <td class="centrado">B</td>
-                            <td class="centrado">DDD06060</td>
-                            <td class="centrado">EXITO <input type="image" src="../_Images/mail.png" style="width:16px;border-width:0px;" /></td>
-			            </tr>
-                        <tr>
-				            <td class="centrado">16:00</td>
-                            <td class="centrado">B</td>
-                            <td class="centrado">DDD08080</td>
-                            <td class="centrado"> <a href='Detalles.aspx?DIR=DDD08080'><input type="image" src="../_Images/edit.png" style="width:16px;border-width:0px;" /></a></td>
-			            </tr>
-                        <tr class="alt">
-				            <td class="centrado">17:00</td>
-                            <td class="centrado">C</td>
-                            <td class="centrado">DDD09090</td>
-                            <td class="centrado"> <a href='Detalles.aspx?DIR=DDD09090'><input type="image" src="../_Images/edit.png" style="width:16px;border-width:0px;" /></a></td>
-			            </tr>
-		            </table>
-                </td>
-            </tr>--%>
             <tr>
                 <td>
                     <fieldset class="fsConsulta" style="color:#333333;width:300px;">
